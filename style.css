@@ -1,0 +1,415 @@
+/* ==========================================
+   W4steR Music — Официальный CSS (v6.0 Pure Neon Blur)
+   ========================================== */
+
+/* Обнуляем дефолтные отступы */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #0a0a0a;
+    color: #ffffff;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Чистые неоновые пятна в фоне (без использования фото) */
+body::before {
+    content: '';
+    position: fixed; /* Пятна остаются на месте при скролле */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Слева мягкое фиолетовое пятно, справа — тёмно-красное */
+    background: 
+        radial-gradient(circle at 10% 40%, rgba(118, 30, 200, 0.12) 0%, rgba(0, 0, 0, 0) 50%),
+        radial-gradient(circle at 90% 70%, rgba(255, 30, 80, 0.1) 0%, rgba(0, 0, 0, 0) 50%);
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Настройка главного экрана */
+.hero {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    background: url('hero.jpg') center 20% / cover no-repeat; 
+    overflow: hidden;
+    
+    /* Маска, которая плавно размывает в ноль нижние 20% самой фотки */
+    -webkit-mask-image: linear-gradient(180deg, #000 80%, transparent 100%);
+    mask-image: linear-gradient(180deg, #000 80%, transparent 100%);
+}
+
+/* Ультра-плавный дымчатый переход от фото к нижним блокам */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Очень мягкое, постепенное гашение фотки, переходящее в плотный черный цвет к самому низу */
+    background: linear-gradient(180deg, 
+        rgba(0, 0, 0, 0.2) 0%, 
+        rgba(10, 10, 10, 0.4) 40%, 
+        rgba(10, 10, 10, 0.8) 75%, 
+        rgba(10, 10, 10, 1) 96%
+    );
+    z-index: 1;
+}
+
+/* Контент внизу экрана */
+.hero-content {
+    position: absolute;
+    z-index: 2;
+    left: 50%;
+    bottom: 8vh;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 600px;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.brand-logo {
+    max-width: 420px;
+    width: 100%;
+    height: auto;
+    margin-bottom: 12px;
+    filter: drop-shadow(0px 4px 15px rgba(0, 0, 0, 0.95)); 
+}
+
+.brand-subtitle {
+    font-size: 1.1rem;
+    color: #cccccc;
+    letter-spacing: 1px;
+    margin-bottom: 35px;
+    text-transform: uppercase;
+    font-weight: 400;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
+}
+
+.btn-latest {
+    display: inline-block;
+    padding: 15px 45px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #ffffff;
+    text-decoration: none;
+    border: 2px solid #ffffff;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.btn-latest:hover {
+    background-color: #ffffff;
+    color: #000000;
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.7);
+    transform: translateY(-3px);
+}
+
+/* Общий контейнер */
+.container {
+    width: 100%;
+    max-width: 1000px;
+}
+
+.section-title {
+    font-size: 2rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: #ff3366;
+    margin: 15px auto 0 auto;
+}
+
+/* Секция: Релиз и Стриминги */
+.music-section {
+    padding: 100px 20px 60px 20px;
+    background-color: transparent; /* Убираем черную заливку */
+    display: flex;
+    justify-content: center;
+}
+
+.release-container {
+    display: flex;
+    gap: 50px;
+    align-items: center;
+}
+
+.release-cover {
+    flex: 1;
+    max-width: 400px;
+}
+
+.release-cover img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+}
+
+.release-info {
+    flex: 1;
+}
+
+.release-name {
+    font-size: 2.5rem;
+    font-weight: 900;
+    margin-bottom: 5px;
+}
+
+.release-desc {
+    font-size: 1.1rem;
+    color: #888888;
+    margin-bottom: 30px;
+}
+
+.streaming-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+}
+
+.stream-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    background: rgba(20, 20, 20, 0.6); /* Полупрозрачные плашки */
+    backdrop-filter: blur(8px);
+    border: 1px solid #1f1f1f;
+    border-radius: 6px;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 700;
+    letter-spacing: 1px;
+    transition: all 0.2s ease;
+}
+
+.stream-card:hover {
+    background: #1c1c1c;
+    border-color: #ff3366;
+    transform: translateX(5px);
+}
+
+/* Секция: Дискография */
+.discography-section {
+    padding: 60px 20px 100px 20px;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column; /* Выстраиваем заголовок и сетку вертикально */
+    align-items: center;    /* Центрируем всё по горизонтали */
+    justify-content: center;
+}
+.albums-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+    width: 100%; /* Чтобы сетка занимала всю ширину контейнера */
+}
+
+.album-card, .album-card:visited {
+    text-decoration: none;
+    color: #ffffff; /* Задаем белый цвет для всего текста внутри карточки-ссылки */
+}
+
+.album-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+}
+
+.album-card:hover img {
+    transform: scale(1.05);
+    box-shadow: 0 12px 25px rgba(255, 51, 102, 0.3);
+}
+
+.album-card h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.album-card p {
+    font-size: 0.9rem;
+    color: #888888;
+}
+
+/* Адаптив под мобилки */
+@media (max-width: 768px) {
+    .hero { background-position: center 15%; }
+    .hero-content { bottom: 5vh; }
+    .brand-logo { max-width: 260px; }
+    .brand-subtitle { font-size: 0.9rem; margin-bottom: 25px; }
+    .btn-latest { padding: 12px 30px; font-size: 0.85rem; }
+
+    body::before {
+        /* На мобилках центрируем пятна, чтобы они аккуратно подсвечивали узкий экран */
+        background: 
+            radial-gradient(circle at 50% 30%, rgba(118, 30, 200, 0.1) 0%, rgba(0, 0, 0, 0) 60%),
+            radial-gradient(circle at 50% 70%, rgba(255, 30, 80, 0.08) 0%, rgba(0, 0, 0, 0) 60%);
+    }
+
+    .release-container {
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+    }
+    .release-cover { max-width: 280px; }
+    .release-name { font-size: 2rem; }
+    .stream-card:hover { transform: none; }
+
+    .albums-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    .album-card h4 { font-size: 0.95rem; }
+}
+/* ==========================================
+   Новый раздел: Профили и Соцсети (5 кнопок)
+   ========================================== */
+.socials-section {
+    padding: 60px 20px 120px 20px;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.socials-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* 6 кнопок строго в один ряд на ПК */
+    gap: 15px;
+    margin-top: 40px;
+    width: 100%;
+}
+
+.social-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 10px;
+    background: rgba(20, 20, 20, 0.6);
+    backdrop-filter: blur(8px);
+    border: 1px solid #1f1f1f;
+    border-radius: 6px;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.social-card:hover {
+    background: #1c1c1c;
+    border-color: #ff3366;
+    box-shadow: 0 0 15px rgba(255, 51, 102, 0.2);
+    transform: translateY(-3px);
+}
+
+/* Адаптив под планшеты и мобилки */
+@media (max-width: 1024px) {
+    .socials-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 в ряд на планшетах */
+    }
+}
+
+@media (max-width: 768px) {
+    .socials-grid {
+        grid-template-columns: 1fr; /* В один столбец на телефонах */
+        gap: 12px;
+    }
+    .social-card {
+        padding: 18px;
+        font-size: 0.95rem;
+    }
+}
+/* Адаптив под планшеты (экраны поменьше) */
+@media (max-width: 1024px) {
+    .socials-grid {
+        grid-template-columns: repeat(3, 1fr); /* 6 кнопок красиво делятся на 2 ряда по 3 штуки */
+        gap: 15px;
+    }
+}
+
+/* Адаптив под мобилки (телефоны) */
+@media (max-width: 768px) {
+    .socials-grid {
+        grid-template-columns: 1fr; /* На смартфонах строгий список в одну колонку */
+        gap: 12px;
+    }
+    .social-card {
+        padding: 18px; /* Делаем кнопки потолще, чтобы на телефоне точно не промахнуться */
+        font-size: 0.95rem;
+    }
+}
+/* ==========================================
+   Официальный подвал (Лебедевский стиль)
+   ========================================== */
+.site-footer {
+    padding: 30px 20px;
+    background-color: rgba(10, 10, 10, 0.5); /* Легкое затемнение самого низа */
+    border-top: 1px solid rgba(255, 255, 255, 0.05); /* Едва заметная тонкая линия разделения */
+    display: flex;
+    justify-content: center;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between; /* Разносим копирайт и разработчика по бокам */
+    align-items: center;
+    width: 100%;
+}
+
+.footer-copy, .footer-developer {
+    font-size: 0.75rem; /* Мелкий, аккуратный шрифт */
+    color: #a0a0a0;     /* ПОПРАВИЛ: Сделали базовый текст посветлее и читаемее */
+    letter-spacing: 0.5px;
+}
+
+.dev-link {
+    color: #ffffff;     /* ПОПРАВИЛ: Твой ник теперь горит чистым белым цветом */
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.2s ease;
+}
+
+/* Эффект наведения на разработчика */
+.dev-link:hover {
+    color: #ff3366; /* Твой фирменный неоновый розовый */
+    text-shadow: 0 0 10px rgba(255, 51, 102, 0.6); /* ПОПРАВИЛ: Сделал неон поярче */
+}
+
+/* Адаптив под мобилки */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column; /* На телефонах строчки встают друг под друга */
+        gap: 10px;
+        text-align: center;
+    }
+}
