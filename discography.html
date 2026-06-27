@@ -30,12 +30,11 @@
         /* ТВОИ РОДНЫЕ НЕОНОВЫЕ ПЯТНА В ФОНЕ */
         body::before {
             content: '';
-            position: fixed; /* Пятна остаются на месте при скролле */
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            /* Слева мягкое фиолетовое пятно, справа — тёмно-красное */
             background: 
                 radial-gradient(circle at 10% 40%, rgba(118, 30, 200, 0.12) 0%, rgba(0, 0, 0, 0) 50%),
                 radial-gradient(circle at 90% 70%, rgba(255, 30, 80, 0.1) 0%, rgba(0, 0, 0, 0) 50%);
@@ -43,7 +42,6 @@
             pointer-events: none;
         }
 
-        /* Контентная зона (центрирует треки) */
         .main-content {
             flex: 1;
             width: 100%;
@@ -76,13 +74,12 @@
             font-weight: 700;
             color: #ffffff;
             padding-bottom: 8px;
-            margin-top: 50px;
+            margin-top: 40px;
             margin-bottom: 25px;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
-        /* Твоя фирменная неоновая черта под заголовком */
         .section-title::after {
             content: '';
             display: block;
@@ -98,12 +95,7 @@
             gap: 15px;
         }
 
-        /* Карточки в стиле твоих стримингов (Тёмно-серые, полупрозрачные плашки) */
         .release-card {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 20px;
             background: rgba(20, 20, 20, 0.6); 
             backdrop-filter: blur(8px);
             border: 1px solid #1f1f1f;
@@ -111,11 +103,18 @@
             transition: all 0.2s ease;
         }
 
-        /* Наведение в стиле твоего главного сайта */
         .release-card:hover {
             background: #1c1c1c;
             border-color: #ff3366;
             transform: translateX(5px);
+        }
+
+        .card-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            width: 100%;
         }
 
         .release-info {
@@ -139,7 +138,6 @@
             display: flex;
         }
 
-        /* Кнопка "Слушать" с твоим главным неоновым акцентом #ff3366 */
         .btn-link {
             text-decoration: none;
             color: #ffffff;
@@ -158,6 +156,73 @@
             background-color: #ffffff;
             color: #000000;
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+        }
+
+        /* ТРЕКЛИСТ БЕЗ ВРЕМЕНИ */
+        .tracklist-details {
+            width: 100%;
+        }
+
+        .tracklist-summary {
+            font-size: 0.8rem;
+            color: #ff3366;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            list-style: none;
+            margin-top: 8px;
+            display: inline-block;
+            transition: color 0.2s;
+        }
+
+        .tracklist-summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .tracklist-summary:hover {
+            color: #f0c3f7;
+        }
+
+        .tracklist-summary::after {
+            content: ' ▲'; /* По дефолту на скрине открыт, поставил стрелку вверх */
+            font-size: 0.7rem;
+        }
+
+        .tracklist-details[open] .tracklist-summary::after {
+            content: ' ▲';
+        }
+
+        /* Если свернут — меняем на стрелку вниз */
+        .tracklist-details:not([open]) .tracklist-summary::after {
+            content: ' ▼';
+        }
+
+        .track-container {
+            padding: 10px 20px 10px 10px;
+            border-top: 1px solid #1f1f1f;
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .track-row {
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem;
+            color: #e2e2e6;
+        }
+
+        .track-num {
+            color: #888888;
+            width: 25px;
+            font-weight: 500;
+        }
+
+        .track-name {
+            font-weight: 600;
+            letter-spacing: 0.3px;
         }
 
         .back-link {
@@ -179,11 +244,11 @@
             text-shadow: 0 0 10px rgba(255, 51, 102, 0.6);
         }
 
-        /* ТВОЙ ОРИГИНАЛЬНЫЙ ОФИЦИАЛЬНЫЙ ПОДВАЛ (ЛЕБЕДЕВСКИЙ СТИЛЬ) */
+        /* ПОДВАЛ */
         .site-footer {
             padding: 30px 20px;
-            background-color: rgba(10, 10, 10, 0.5); /* Легкое затемнение самого низа */
-            border-top: 1px solid rgba(255, 255, 255, 0.05); /* Едва заметная тонкая линия разделения */
+            background-color: rgba(10, 10, 10, 0.5);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
             display: flex;
             justify-content: center;
             width: 100%;
@@ -192,48 +257,45 @@
 
         .footer-container {
             display: flex;
-            justify-content: space-between; /* Разносим копирайт и разработчика по бокам */
+            justify-content: space-between;
             align-items: center;
             width: 100%;
-            max-width: 1000px; /* Соответствует контенту главного сайта */
+            max-width: 1000px;
         }
 
         .footer-copy, .footer-developer {
-            font-size: 0.75rem; /* Мелкий, аккуратный шрифт */
-            color: #a0a0a0;     /* Базовый текст посветлее и читаемее */
+            font-size: 0.75rem;
+            color: #a0a0a0;
             letter-spacing: 0.5px;
         }
 
         .dev-link {
-            color: #ffffff;     /* Твой ник горит чистым белым цветом */
+            color: #ffffff;
             text-decoration: none;
             font-weight: 700;
             transition: all 0.2s ease;
         }
 
-        /* Эффект наведения на разработчика */
         .dev-link:hover {
-            color: #ff3366; /* Твой фирменный неоновый розовый */
-            text-shadow: 0 0 10px rgba(255, 51, 102, 0.6); /* Сделал неон поярче */
+            color: #ff3366;
+            text-shadow: 0 0 10px rgba(255, 51, 102, 0.6);
         }
 
-        /* Адаптив под мобилки */
         @media (max-width: 768px) {
             body::before {
-                /* На мобилках центрируем пятна, чтобы они аккуратно подсвечивали узкий экран */
                 background: 
                     radial-gradient(circle at 50% 30%, rgba(118, 30, 200, 0.1) 0%, rgba(0, 0, 0, 0) 60%),
                     radial-gradient(circle at 50% 70%, rgba(255, 30, 80, 0.08) 0%, rgba(0, 0, 0, 0) 60%);
             }
             .footer-container {
-                flex-direction: column; /* На телефонах строчки встают друг под друга */
+                flex-direction: column;
                 gap: 10px;
                 text-align: center;
             }
         }
 
         @media (max-width: 550px) {
-            .release-card {
+            .card-inner {
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 15px;
@@ -260,52 +322,62 @@
     <div class="release-grid">
 
         <div class="release-card">
-            <div class="release-info">
-                <span class="release-title">Бессмертны (feat. SHU.NT)</span>
-                <span class="release-meta">Сингл • W4steR, SHU.NT • 26.06.2026</span>
-            </div>
-            <div class="release-links">
-                <a href="https://band.link/FKiAl" class="btn-link" target="_blank">Слушать</a>
-            </div>
-        </div>
-
-        <div class="release-card">
-            <div class="release-info">
-                <span class="release-title">Фокус не вышел</span>
-                <span class="release-meta">Сингл • W4steR • 12.06.2026</span>
-            </div>
-            <div class="release-links">
-                <a href="https://band.link/0Hk8w" class="btn-link" target="_blank">Слушать</a>
+            <div class="card-inner">
+                <div class="release-info">
+                    <span class="release-title">Бессмертны (feat. SHU.NT)</span>
+                    <span class="release-meta">Сингл • W4steR, SHU.NT • 26.06.2026</span>
+                </div>
+                <div class="release-links">
+                    <a href="https://band.link/FKiAl" class="btn-link" target="_blank">Слушать</a>
+                </div>
             </div>
         </div>
 
         <div class="release-card">
-            <div class="release-info">
-                <span class="release-title">В твоём ритме</span>
-                <span class="release-meta">Сингл • W4steR • 17.04.2026</span>
-            </div>
-            <div class="release-links">
-                <a href="https://band.link/o4Bxq" class="btn-link" target="_blank">Слушать</a>
-            </div>
-        </div>
-
-        <div class="release-card">
-            <div class="release-info">
-                <span class="release-title">На своём месте</span>
-                <span class="release-meta">Сингл • W4steR • 20.03.2026</span>
-            </div>
-            <div class="release-links">
-                <a href="https://band.link/fv9Wl" class="btn-link" target="_blank">Слушать</a>
+            <div class="card-inner">
+                <div class="release-info">
+                    <span class="release-title">Фокус не вышел</span>
+                    <span class="release-meta">Сингл • W4steR • 12.06.2026</span>
+                </div>
+                <div class="release-links">
+                    <a href="https://band.link/0Hk8w" class="btn-link" target="_blank">Слушать</a>
+                </div>
             </div>
         </div>
 
         <div class="release-card">
-            <div class="release-info">
-                <span class="release-title">Радиопомехи</span>
-                <span class="release-meta">Сингл • W4steR • 03.02.2026</span>
+            <div class="card-inner">
+                <div class="release-info">
+                    <span class="release-title">В твоём ритме</span>
+                    <span class="release-meta">Сингл • W4steR • 17.04.2026</span>
+                </div>
+                <div class="release-links">
+                    <a href="https://band.link/o4Bxq" class="btn-link" target="_blank">Слушать</a>
+                </div>
             </div>
-            <div class="release-links">
-                <a href="https://band.link/2IRfF" class="btn-link" target="_blank">Слушать</a>
+        </div>
+
+        <div class="release-card">
+            <div class="card-inner">
+                <div class="release-info">
+                    <span class="release-title">На своём месте</span>
+                    <span class="release-meta">Сингл • W4steR • 20.03.2026</span>
+                </div>
+                <div class="release-links">
+                    <a href="https://band.link/fv9Wl" class="btn-link" target="_blank">Слушать</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="release-card">
+            <div class="card-inner">
+                <div class="release-info">
+                    <span class="release-title">Радиопомехи</span>
+                    <span class="release-meta">Сингл • W4steR • 03.02.2026</span>
+                </div>
+                <div class="release-links">
+                    <a href="https://band.link/2IRfF" class="btn-link" target="_blank">Слушать</a>
+                </div>
             </div>
         </div>
 
@@ -314,13 +386,38 @@
     <div class="section-title">Альбомы и EP</div>
     <div class="release-grid">
 
-        <div class="release-card">
-            <div class="release-info">
-                <span class="release-title">Голос из вакуума</span>
-                <span class="release-meta">Альбом • W4steR • 13.05.2026</span>
-            </div>
-            <div class="release-links">
-                <a href="https://band.link/pwEjl" class="btn-link" target="_blank">Слушать</a>
+        <div class="release-card" style="flex-direction: column; align-items: flex-start; padding: 0;">
+            <div class="card-inner">
+                <div class="release-info">
+                    <span class="release-title">Голос из вакуума</span>
+                    <span class="release-meta">Альбом • W4steR • 13.05.2026</span>
+                    
+                    <details class="tracklist-details" open>
+                        <summary class="tracklist-summary">Треклист</summary>
+                        <div class="track-container">
+                            <div class="track-row">
+                                <span class="track-num">1</span>
+                                <span class="track-name">Не могу молчать</span>
+                            </div>
+                            <div class="track-row">
+                                <span class="track-num">2</span>
+                                <span class="track-name">В самый раз</span>
+                            </div>
+                            <div class="track-row">
+                                <span class="track-num">3</span>
+                                <span class="track-name">Вне гравитации</span>
+                            </div>
+                            <div class="track-row">
+                                <span class="track-num">4</span>
+                                <span class="track-name">Я выбрал тебя</span>
+                            </div>
+                        </div>
+                    </details>
+                </div>
+                
+                <div class="release-links">
+                    <a href="https://band.link/pwEjl" class="btn-link" target="_blank">Слушать</a>
+                </div>
             </div>
         </div>
 
