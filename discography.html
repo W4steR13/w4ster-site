@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>W4steR — Дискография</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* ==========================================
+           W4steR Music — Дискография (Pure Neon Blur)
+           ========================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #0a0a0a;
+            color: #ffffff;
+            overflow-x: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* ТВОИ РОДНЫЕ НЕОНОВЫЕ ПЯТНА В ФОНЕ */
+        body::before {
+            content: '';
+            position: fixed; /* Пятна остаются на месте при скролле */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Слева мягкое фиолетовое пятно, справа — тёмно-красное */
+            background: 
+                radial-gradient(circle at 10% 40%, rgba(118, 30, 200, 0.12) 0%, rgba(0, 0, 0, 0) 50%),
+                radial-gradient(circle at 90% 70%, rgba(255, 30, 80, 0.1) 0%, rgba(0, 0, 0, 0) 50%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Контентная зона (центрирует треки) */
+        .main-content {
+            flex: 1;
+            width: 100%;
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin: 0 0 10px 0;
+        }
+
+        header p {
+            color: #888888;
+            font-size: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #ffffff;
+            padding-bottom: 8px;
+            margin-top: 50px;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Твоя фирменная неоновая черта под заголовком */
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 3px;
+            background-color: #ff3366;
+            margin-top: 10px;
+        }
+
+        .release-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+
+        /* Карточки в стиле твоих стримингов (Тёмно-серые, полупрозрачные плашки) */
+        .release-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            background: rgba(20, 20, 20, 0.6); 
+            backdrop-filter: blur(8px);
+            border: 1px solid #1f1f1f;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        /* Наведение в стиле твоего главного сайта */
+        .release-card:hover {
+            background: #1c1c1c;
+            border-color: #ff3366;
+            transform: translateX(5px);
+        }
+
+        .release-info {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .release-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .release-meta {
+            font-size: 0.85rem;
+            color: #888888;
+        }
+
+        .release-links {
+            display: flex;
+        }
+
+        /* Кнопка "Слушать" с твоим главным неоновым акцентом #ff3366 */
+        .btn-link {
+            text-decoration: none;
+            color: #ffffff;
+            background-color: transparent;
+            border: 2px solid #ffffff;
+            padding: 8px 24px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-link:hover {
+            background-color: #ffffff;
+            color: #000000;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 50px;
+            color: #888888;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.2s;
+            text-align: center;
+            width: 100%;
+        }
+
+        .back-link:hover {
+            color: #ff3366;
+            text-shadow: 0 0 10px rgba(255, 51, 102, 0.6);
+        }
+
+        /* ТВОЙ ОРИГИНАЛЬНЫЙ ОФИЦИАЛЬНЫЙ ПОДВАЛ (ЛЕБЕДЕВСКИЙ СТИЛЬ) */
+        .site-footer {
+            padding: 30px 20px;
+            background-color: rgba(10, 10, 10, 0.5); /* Легкое затемнение самого низа */
+            border-top: 1px solid rgba(255, 255, 255, 0.05); /* Едва заметная тонкая линия разделения */
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin-top: 60px;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between; /* Разносим копирайт и разработчика по бокам */
+            align-items: center;
+            width: 100%;
+            max-width: 1000px; /* Соответствует контенту главного сайта */
+        }
+
+        .footer-copy, .footer-developer {
+            font-size: 0.75rem; /* Мелкий, аккуратный шрифт */
+            color: #a0a0a0;     /* Базовый текст посветлее и читаемее */
+            letter-spacing: 0.5px;
+        }
+
+        .dev-link {
+            color: #ffffff;     /* Твой ник горит чистым белым цветом */
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.2s ease;
+        }
+
+        /* Эффект наведения на разработчика */
+        .dev-link:hover {
+            color: #ff3366; /* Твой фирменный неоновый розовый */
+            text-shadow: 0 0 10px rgba(255, 51, 102, 0.6); /* Сделал неон поярче */
+        }
+
+        /* Адаптив под мобилки */
+        @media (max-width: 768px) {
+            body::before {
+                /* На мобилках центрируем пятна, чтобы они аккуратно подсвечивали узкий экран */
+                background: 
+                    radial-gradient(circle at 50% 30%, rgba(118, 30, 200, 0.1) 0%, rgba(0, 0, 0, 0) 60%),
+                    radial-gradient(circle at 50% 70%, rgba(255, 30, 80, 0.08) 0%, rgba(0, 0, 0, 0) 60%);
+            }
+            .footer-container {
+                flex-direction: column; /* На телефонах строчки встают друг под друга */
+                gap: 10px;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .release-card {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            .release-links {
+                width: 100%;
+            }
+            .btn-link {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="main-content">
+    <header>
+        <h1>W4steR</h1>
+        <p>Дискография / Релизы 2026</p>
+    </header>
+
+    <div class="section-title">Синглы</div>
+    <div class="release-grid">
+
+        <div class="release-card">
+            <div class="release-info">
+                <span class="release-title">Бессмертны (feat. SHU.NT)</span>
+                <span class="release-meta">Сингл • W4steR, SHU.NT • 26.06.2026</span>
+            </div>
+            <div class="release-links">
+                <a href="https://band.link/FKiAl" class="btn-link" target="_blank">Слушать</a>
+            </div>
+        </div>
+
+        <div class="release-card">
+            <div class="release-info">
+                <span class="release-title">Фокус не вышел</span>
+                <span class="release-meta">Сингл • W4steR • 12.06.2026</span>
+            </div>
+            <div class="release-links">
+                <a href="https://band.link/0Hk8w" class="btn-link" target="_blank">Слушать</a>
+            </div>
+        </div>
+
+        <div class="release-card">
+            <div class="release-info">
+                <span class="release-title">В твоём ритме</span>
+                <span class="release-meta">Сингл • W4steR • 17.04.2026</span>
+            </div>
+            <div class="release-links">
+                <a href="https://band.link/o4Bxq" class="btn-link" target="_blank">Слушать</a>
+            </div>
+        </div>
+
+        <div class="release-card">
+            <div class="release-info">
+                <span class="release-title">На своём месте</span>
+                <span class="release-meta">Сингл • W4steR • 20.03.2026</span>
+            </div>
+            <div class="release-links">
+                <a href="https://band.link/fv9Wl" class="btn-link" target="_blank">Слушать</a>
+            </div>
+        </div>
+
+        <div class="release-card">
+            <div class="release-info">
+                <span class="release-title">Радиопомехи</span>
+                <span class="release-meta">Сингл • W4steR • 03.02.2026</span>
+            </div>
+            <div class="release-links">
+                <a href="https://band.link/2IRfF" class="btn-link" target="_blank">Слушать</a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="section-title">Альбомы и EP</div>
+    <div class="release-grid">
+
+        <div class="release-card">
+            <div class="release-info">
+                <span class="release-title">Голос из вакуума</span>
+                <span class="release-meta">Альбом • W4steR • 13.05.2026</span>
+            </div>
+            <div class="release-links">
+                <a href="https://band.link/pwEjl" class="btn-link" target="_blank">Слушать</a>
+            </div>
+        </div>
+
+    </div>
+
+    <a href="index.html" class="back-link">← На главную</a>
+</div>
+
+<footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-copy">
+            &copy; 2026 W4steR Music. Все права защищены. Независимый артист & музыкальный лейбл.
+        </div>
+        <div class="footer-developer">
+            Разработка сайта — <a href="https://vk.com/ilya_waster" target="_blank" class="dev-link">W4steR Dev.</a> &copy;
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
