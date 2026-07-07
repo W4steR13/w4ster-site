@@ -121,6 +121,7 @@
             display: flex;
             flex-direction: column;
             gap: 5px;
+            width: 100%;
         }
 
         .release-title {
@@ -136,6 +137,7 @@
 
         .release-links {
             display: flex;
+            align-items: center;
         }
 
         .btn-link {
@@ -185,7 +187,7 @@
         }
 
         .tracklist-summary::after {
-            content: ' ▲'; /* По дефолту на скрине открыт, поставил стрелку вверх */
+            content: ' ▲';
             font-size: 0.7rem;
         }
 
@@ -386,11 +388,48 @@
     <div class="section-title">Альбомы и EP</div>
     <div class="release-grid">
 
+        <!-- СВЕЖИЙ EP «КОГДА ВСЕ ДОМА» -->
         <div class="release-card" style="flex-direction: column; align-items: flex-start; padding: 0;">
             <div class="card-inner">
                 <div class="release-info">
-                    <span class="release-title">Голос из вакуума</span>
-                    <span class="release-meta">Альбом • W4steR • 13.05.2026</span>
+                    <span class="release-title">Когда все дома</span>
+                    <span class="release-meta">EP • W4steR • 08.07.2026</span>
+                    
+                    <details class="tracklist-details">
+                        <summary class="tracklist-summary">Треклист</summary>
+                        <div class="track-container">
+                            <div class="track-row">
+                                <span class="track-num">1</span>
+                                <span class="track-name">Мама</span>
+                            </div>
+                            <div class="track-row">
+                                <span class="track-num">2</span>
+                                <span class="track-name">Когда все дома</span>
+                            </div>
+                            <div class="track-row">
+                                <span class="track-num">3</span>
+                                <span class="track-name">Дым</span>
+                            </div>
+                            <div class="track-row">
+                                <span class="track-num">4</span>
+                                <span class="track-name">Если бы знал</span>
+                            </div>
+                        </div>
+                    </details>
+                </div>
+                
+                <div class="release-links">
+                    <a href="https://band.link/Wa5aT" class="btn-link" target="_blank">Слушать</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- ПРЕДЫДУЩИЙ РЕЛИЗ -->
+        <div class="release-card" style="flex-direction: column; align-items: flex-start; padding: 0;">
+            <div class="card-inner">
+                <div class="release-info">
+                    <span class="release-title">Голоса из вакуума</span>
+                    <span class="release-meta">EP • W4steR • 13.05.2026</span>
                     
                     <details class="tracklist-details">
                         <summary class="tracklist-summary">Треклист</summary>
