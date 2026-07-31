@@ -409,6 +409,75 @@ body::before {
 @media (max-width: 768px) {
     .footer-container {
         flex-direction: column; /* На телефонах строчки встают друг под друга */
+
+       /* ==========================================
+   Раздел: Профили и Соцсети (6 сверху, 2 снизу по центру)
+   ========================================== */
+.socials-section {
+    padding: 60px 20px 120px 20px;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.socials-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Центрирует 2 нижние кнопки строго по середине */
+    gap: 15px;
+    margin-top: 40px;
+    width: 100%;
+    max-width: 1000px; /* Фиксируем ширину, чтобы ровно 6 кнопок влезало в первый ряд */
+}
+
+.social-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Расчет ширины: (100% - отступы) / 6 колонок = ровно 6 штук в верхнем ряду */
+    width: calc((100% - 75px) / 6); 
+    padding: 16px 5px;
+    background: rgba(20, 20, 20, 0.6);
+    backdrop-filter: blur(8px);
+    border: 1px solid #1f1f1f;
+    border-radius: 6px;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.social-card:hover {
+    background: #1c1c1c;
+    border-color: #ff3366;
+    box-shadow: 0 0 15px rgba(255, 51, 102, 0.2);
+    transform: translateY(-3px);
+}
+
+/* Адаптив под планшеты (делим красиво 8 кнопок по 4 в ряд) */
+@media (max-width: 1024px) {
+    .social-card {
+        width: calc((100% - 45px) / 4);
+    }
+}
+
+/* Адаптив под мобилки (список в 1 колонку) */
+@media (max-width: 768px) {
+    .socials-grid {
+        flex-direction: column;
+        gap: 12px;
+    }
+    .social-card {
+        width: 100%;
+        padding: 18px;
+        font-size: 0.95rem;
+    }
+}
         gap: 10px;
         text-align: center;
     }
