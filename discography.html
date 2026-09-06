@@ -1,498 +1,314 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>W4steR — Дискография</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;900&display=swap" rel="stylesheet">
-    <style>
-        /* ==========================================
-           W4steR Music — Дискография (Pure Neon Blur)
-           ========================================== */
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Дискография — W4steR</title>
+  
+  <!-- SEO Мета-теги -->
+  <meta name="description" content="Полный каталог релизов, альбомов и синглов музыкального проекта W4steR. Слушайте на всех площадках.">
+  <meta name="keywords" content="W4steR, дискография, Скажи ей, Карточный домик, Когда все дома, Голос из вакуума, слушать онлайн">
+  <meta name="robots" content="index, follow">
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <!-- Open Graph / Превью для соцсетей -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://w4ster.ru/discography.html">
+  <meta property="og:title" content="Дискография — W4steR">
+  <meta property="og:description" content="Полный каталог релизов, синглов и EP проекта W4steR. Треклисты и ссылки на площадки.">
+  <meta property="og:image" content="logo.png">
 
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: #0a0a0a;
-            color: #ffffff;
-            overflow-x: hidden;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
+  <!-- Фавиконка -->
+  <link rel="icon" href="favicon.png" type="image/png">
 
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 10% 40%, rgba(118, 30, 200, 0.12) 0%, rgba(0, 0, 0, 0) 50%),
-                radial-gradient(circle at 90% 70%, rgba(255, 30, 80, 0.1) 0%, rgba(0, 0, 0, 0) 50%);
-            z-index: -1;
-            pointer-events: none;
-        }
+  <!-- Шрифты и стили -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Oswald:wght@500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 
-        .main-content {
-            flex: 1;
-            width: 100%;
-            max-width: 700px;
-            margin: 0 auto;
-            padding: 60px 20px;
-        }
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript">
+      (function(m,e,t,r,i,k,a){
+          m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+          m[i].l=1*new Date();
+          for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+          k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+      })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=112329719', 'ym');
 
-        header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        header h1 {
-            font-size: 2.5rem;
-            font-weight: 900;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            margin: 0 0 10px 0;
-        }
-
-        header p {
-            color: #888888;
-            font-size: 1rem;
-            letter-spacing: 1px;
-        }
-
-        .section-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: #ffffff;
-            padding-bottom: 8px;
-            margin-top: 40px;
-            margin-bottom: 25px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 40px;
-            height: 3px;
-            background-color: #ff3366;
-            margin-top: 10px;
-        }
-
-        .release-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 15px;
-        }
-
-        .release-card {
-            background: rgba(20, 20, 20, 0.6); 
-            backdrop-filter: blur(8px);
-            border: 1px solid #1f1f1f;
-            border-radius: 6px;
-            transition: all 0.2s ease;
-        }
-
-        .release-card:hover {
-            background: #1c1c1c;
-            border-color: #ff3366;
-            transform: translateX(5px);
-        }
-
-        .card-inner {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 20px;
-            width: 100%;
-        }
-
-        .release-info {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-            width: 100%;
-        }
-
-        .release-title {
-            font-size: 1.15rem;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-        }
-
-        .release-meta {
-            font-size: 0.85rem;
-            color: #888888;
-        }
-
-        .release-links {
-            display: flex;
-            align-items: center;
-        }
-
-        .btn-link {
-            text-decoration: none;
-            color: #ffffff;
-            background-color: transparent;
-            border: 2px solid #ffffff;
-            padding: 8px 24px;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-        }
-
-        .btn-link:hover {
-            background-color: #ffffff;
-            color: #000000;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
-        }
-
-        .tracklist-details {
-            width: 100%;
-        }
-
-        .tracklist-summary {
-            font-size: 0.8rem;
-            color: #ff3366;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            cursor: pointer;
-            list-style: none;
-            margin-top: 8px;
-            display: inline-block;
-            transition: color 0.2s;
-        }
-
-        .tracklist-summary::-webkit-details-marker {
-            display: none;
-        }
-
-        .tracklist-summary:hover {
-            color: #f0c3f7;
-        }
-
-        .tracklist-summary::after {
-            content: ' ▲';
-            font-size: 0.7rem;
-        }
-
-        .tracklist-details[open] .tracklist-summary::after {
-            content: ' ▲';
-        }
-
-        .tracklist-details:not([open]) .tracklist-summary::after {
-            content: ' ▼';
-        }
-
-        .track-container {
-            padding: 10px 20px 10px 10px;
-            border-top: 1px solid #1f1f1f;
-            margin-top: 15px;
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-        }
-
-        .track-row {
-            display: flex;
-            align-items: center;
-            font-size: 0.9rem;
-            color: #e2e2e6;
-        }
-
-        .track-num {
-            color: #888888;
-            width: 25px;
-            font-weight: 500;
-        }
-
-        .track-name {
-            font-weight: 600;
-            letter-spacing: 0.3px;
-        }
-
-        .back-link {
-            display: inline-block;
-            margin-top: 50px;
-            color: #888888;
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: color 0.2s;
-            text-align: center;
-            width: 100%;
-        }
-
-        .back-link:hover {
-            color: #ff3366;
-            text-shadow: 0 0 10px rgba(255, 51, 102, 0.6);
-        }
-
-        .site-footer {
-            padding: 30px 20px;
-            background-color: rgba(10, 10, 10, 0.5);
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            display: flex;
-            justify-content: center;
-            width: 100%;
-            margin-top: 60px;
-        }
-
-        .footer-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            max-width: 1000px;
-        }
-
-        .footer-copy, .footer-developer {
-            font-size: 0.75rem;
-            color: #a0a0a0;
-            letter-spacing: 0.5px;
-        }
-
-        .dev-link {
-            color: #ffffff;
-            text-decoration: none;
-            font-weight: 700;
-            transition: all 0.2s ease;
-        }
-
-        .dev-link:hover {
-            color: #ff3366;
-            text-shadow: 0 0 10px rgba(255, 51, 102, 0.6);
-        }
-
-        @media (max-width: 768px) {
-            body::before {
-                background: 
-                    radial-gradient(circle at 50% 30%, rgba(118, 30, 200, 0.1) 0%, rgba(0, 0, 0, 0) 60%),
-                    radial-gradient(circle at 50% 70%, rgba(255, 30, 80, 0.08) 0%, rgba(0, 0, 0, 0) 60%);
-            }
-            .footer-container {
-                flex-direction: column;
-                gap: 10px;
-                text-align: center;
-            }
-        }
-
-        @media (max-width: 550px) {
-            .card-inner {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 15px;
-            }
-            .release-links {
-                width: 100%;
-            }
-            .btn-link {
-                width: 100%;
-                text-align: center;
-            }
-        }
-    </style>
+      ym(112329719, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/112329719" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  <!-- /Yandex.Metrika counter -->
 </head>
-<body>
+<body class="disco-page-body">
+<div class="noise"></div>
 
-<div class="main-content">
-    <header>
-        <h1>W4steR</h1>
-        <p>Дискография / Релизы 2026</p>
-    </header>
+<header class="top">
+  <a class="mini-logo" href="index.html"><img src="logo.png" alt="W4steR"></a>
+  <nav>
+    <a href="index.html#release">СВЕЖЕЕ</a>
+    <a href="discography.html" class="active-nav">ДИСКОГРАФИЯ</a>
+    <a href="index.html#about">ОБО МНЕ</a>
+    <a href="index.html#links">ССЫЛКИ</a>
+  </nav>
+  <a class="edition back-link" href="index.html">← НА ГЛАВНУЮ</a>
+</header>
 
-    <div class="section-title">Синглы</div>
-    <div class="release-grid">
+<main class="disco-page-main">
+  <div class="ghost-word-disco">CATALOG</div>
 
-        <div class="release-card">
-            <div class="card-inner">
-                <div class="release-info">
-                    <span class="release-title">Скажи ей!</span>
-                    <span class="release-meta">Сингл • W4steR • 28.08.2026</span>
-                </div>
-                <div class="release-links">
-                    <a href="https://band.link/Q2gHJ" class="btn-link" target="_blank">Слушать</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="release-card">
-            <div class="card-inner">
-                <div class="release-info">
-                    <span class="release-title">Карточный домик</span>
-                    <span class="release-meta">Сингл • W4steR • 31.07.2026</span>
-                </div>
-                <div class="release-links">
-                    <a href="https://band.link/Wa5aT" class="btn-link" target="_blank">Слушать</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="release-card">
-            <div class="card-inner">
-                <div class="release-info">
-                    <span class="release-title">Бессмертны (feat. SHU.NT)</span>
-                    <span class="release-meta">Сингл • W4steR, SHU.NT • 26.06.2026</span>
-                </div>
-                <div class="release-links">
-                    <a href="https://band.link/FKiAl" class="btn-link" target="_blank">Слушать</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="release-card">
-            <div class="card-inner">
-                <div class="release-info">
-                    <span class="release-title">Фокус не вышел</span>
-                    <span class="release-meta">Сингл • W4steR • 12.06.2026</span>
-                </div>
-                <div class="release-links">
-                    <a href="https://band.link/0Hk8w" class="btn-link" target="_blank">Слушать</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="release-card">
-            <div class="card-inner">
-                <div class="release-info">
-                    <span class="release-title">В твоём ритме</span>
-                    <span class="release-meta">Сингл • W4steR • 17.04.2026</span>
-                </div>
-                <div class="release-links">
-                    <a href="https://band.link/o4Bxq" class="btn-link" target="_blank">Слушать</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="release-card">
-            <div class="card-inner">
-                <div class="release-info">
-                    <span class="release-title">На своём месте</span>
-                    <span class="release-meta">Сингл • W4steR • 20.03.2026</span>
-                </div>
-                <div class="release-links">
-                    <a href="https://band.link/fv9Wl" class="btn-link" target="_blank">Слушать</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="release-card">
-            <div class="card-inner">
-                <div class="release-info">
-                    <span class="release-title">Радиопомехи</span>
-                    <span class="release-meta">Сингл • W4steR • 03.02.2026</span>
-                </div>
-                <div class="release-links">
-                    <a href="https://band.link/2IRfF" class="btn-link" target="_blank">Слушать</a>
-                </div>
-            </div>
-        </div>
-
+  <section class="disco-catalog-header">
+    <span class="eyebrow">W4STER MUSIC // CATALOG</span>
+    <h1>ПОЛНАЯ<br>ДИСКОГРАФИЯ<span>.</span></h1>
+    
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all">ВСЕ РЕЛИЗЫ (9)</button>
+      <button class="filter-btn" data-filter="single">СИНГЛЫ (7)</button>
+      <button class="filter-btn" data-filter="ep">АЛЬБОМЫ И EP (2)</button>
     </div>
+  </section>
 
-    <div class="section-title">Альбомы и EP</div>
-    <div class="release-grid">
+  <!-- Сетка релизов -->
+  <section class="disco-cards-grid" id="discoCardsGrid">
+    
+    <!-- 01. Скажи ей! -->
+    <article class="disco-card" data-category="single">
+      <div class="disco-card-cover">
+        <img src="skazhi_ey.png" alt="Скажи ей!">
+        <span class="disco-badge pink">NEW</span>
+      </div>
+      <div class="disco-card-info">
+        <div class="d-meta"><span>СИНГЛ</span> · <span>28.08.2026</span></div>
+        <h3>СКАЖИ ЕЙ!</h3>
+        <a href="https://band.link/Q2gHJ" target="_blank" rel="noopener" class="d-listen-btn">
+          СЛУШАТЬ <i>↗</i>
+        </a>
+      </div>
+    </article>
 
-        <div class="release-card" style="flex-direction: column; align-items: flex-start; padding: 0;">
-            <div class="card-inner">
-                <div class="release-info">
-                    <span class="release-title">Когда все дома</span>
-                    <span class="release-meta">EP • W4steR • 08.07.2026</span>
-                    
-                    <details class="tracklist-details">
-                        <summary class="tracklist-summary">Треклист</summary>
-                        <div class="track-container">
-                            <div class="track-row">
-                                <span class="track-num">1</span>
-                                <span class="track-name">Мама</span>
-                            </div>
-                            <div class="track-row">
-                                <span class="track-num">2</span>
-                                <span class="track-name">Когда все дома</span>
-                            </div>
-                            <div class="track-row">
-                                <span class="track-num">3</span>
-                                <span class="track-name">Дым</span>
-                            </div>
-                            <div class="track-row">
-                                <span class="track-num">4</span>
-                                <span class="track-name">Если бы знал</span>
-                            </div>
-                        </div>
-                    </details>
-                </div>
-                
-                <div class="release-links">
-                    <a href="https://band.link/Wa5aT" class="btn-link" target="_blank">Слушать</a>
-                </div>
-            </div>
+    <!-- 02. Карточный домик -->
+    <article class="disco-card" data-category="single">
+      <div class="disco-card-cover">
+        <img src="Card_House.png" alt="Карточный домик">
+      </div>
+      <div class="disco-card-info">
+        <div class="d-meta"><span>СИНГЛ</span> · <span>31.07.2026</span></div>
+        <h3>КАРТОЧНЫЙ ДОМИК</h3>
+        <a href="https://band.link/RoUGm" target="_blank" rel="noopener" class="d-listen-btn">
+          СЛУШАТЬ <i>↗</i>
+        </a>
+      </div>
+    </article>
+
+    <!-- 03. Когда все дома (EP) -->
+    <article class="disco-card ep-card" data-category="ep">
+      <div class="disco-card-cover">
+        <img src="When_Everyone_Is_Home.png" alt="Когда все дома">
+        <span class="disco-badge acid">EP</span>
+
+        <div class="tracklist-overlay">
+          <div class="tl-header">
+            <span>ТРЕКЛИСТ // 4 ТРЕКА</span>
+            <button class="tl-close-btn" type="button">✕</button>
+          </div>
+          <ol class="tl-list">
+            <li><span>01</span> <strong>Мама</strong></li>
+            <li><span>02</span> <strong>Когда все дома</strong></li>
+            <li><span>03</span> <strong>Дым</strong></li>
+            <li><span>04</span> <strong>Если бы знал</strong></li>
+          </ol>
         </div>
-
-        <div class="release-card" style="flex-direction: column; align-items: flex-start; padding: 0;">
-            <div class="card-inner">
-                <div class="release-info">
-                    <span class="release-title">Голоса из вакуума</span>
-                    <span class="release-meta">EP • W4steR • 13.05.2026</span>
-                    
-                    <details class="tracklist-details">
-                        <summary class="tracklist-summary">Треклист</summary>
-                        <div class="track-container">
-                            <div class="track-row">
-                                <span class="track-num">1</span>
-                                <span class="track-name">Не могу молчать</span>
-                            </div>
-                            <div class="track-row">
-                                <span class="track-num">2</span>
-                                <span class="track-name">В самый раз</span>
-                            </div>
-                            <div class="track-row">
-                                <span class="track-num">3</span>
-                                <span class="track-name">Вне гравитации</span>
-                            </div>
-                            <div class="track-row">
-                                <span class="track-num">4</span>
-                                <span class="track-name">Я выбрал тебя</span>
-                            </div>
-                        </div>
-                    </details>
-                </div>
-                
-                <div class="release-links">
-                    <a href="https://band.link/pwEjl" class="btn-link" target="_blank">Слушать</a>
-                </div>
-            </div>
+      </div>
+      <div class="disco-card-info">
+        <div class="d-meta"><span>EP</span> · <span>08.07.2026</span></div>
+        <h3>КОГДА ВСЕ ДОМА</h3>
+        <div class="card-action-row">
+          <button class="tracklist-toggle-btn" type="button">ТРЕКИ ▾</button>
+          <a href="https://band.link/Wa5aT" target="_blank" rel="noopener" class="d-listen-btn">
+            СЛУШАТЬ <i>↗</i>
+          </a>
         </div>
+      </div>
+    </article>
 
-    </div>
+    <!-- 04. Бессмертны -->
+    <article class="disco-card" data-category="single">
+      <div class="disco-card-cover">
+        <img src="Immortals.png" alt="Бессмертны">
+      </div>
+      <div class="disco-card-info">
+        <div class="d-meta"><span>СИНГЛ · FEAT. SHU.NT</span> · <span>26.06.2026</span></div>
+        <h3>БЕССМЕРТНЫ</h3>
+        <a href="https://band.link/FKiAl" target="_blank" rel="noopener" class="d-listen-btn">
+          СЛУШАТЬ <i>↗</i>
+        </a>
+      </div>
+    </article>
 
-    <a href="index.html" class="back-link">← На главную</a>
-</div>
+    <!-- 05. Фокус не вышел -->
+    <article class="disco-card" data-category="single">
+      <div class="disco-card-cover">
+        <img src="Focus%20Failed.png" alt="Фокус не вышел">
+      </div>
+      <div class="disco-card-info">
+        <div class="d-meta"><span>СИНГЛ</span> · <span>12.06.2026</span></div>
+        <h3>ФОКУС НЕ ВЫШЕЛ</h3>
+        <a href="https://band.link/0Hk8w" target="_blank" rel="noopener" class="d-listen-btn">
+          СЛУШАТЬ <i>↗</i>
+        </a>
+      </div>
+    </article>
+
+    <!-- 06. Голос из вакуума (EP) -->
+    <article class="disco-card ep-card" data-category="ep">
+      <div class="disco-card-cover">
+        <img src="Voices_from_the_Vacuum.jpg" alt="Голос из вакуума">
+        <span class="disco-badge acid">EP</span>
+
+        <div class="tracklist-overlay">
+          <div class="tl-header">
+            <span>ТРЕКЛИСТ // 4 ТРЕКА</span>
+            <button class="tl-close-btn" type="button">✕</button>
+          </div>
+          <ol class="tl-list">
+            <li><span>01</span> <strong>Не могу молчать</strong></li>
+            <li><span>02</span> <strong>В самый раз</strong></li>
+            <li><span>03</span> <strong>Вне гравитации</strong></li>
+            <li><span>04</span> <strong>Я выбрал тебя</strong></li>
+          </ol>
+        </div>
+      </div>
+      <div class="disco-card-info">
+        <div class="d-meta"><span>EP</span> · <span>13.05.2026</span></div>
+        <h3>ГОЛОС ИЗ ВАКУУМА</h3>
+        <div class="card-action-row">
+          <button class="tracklist-toggle-btn" type="button">ТРЕКИ ▾</button>
+          <a href="https://band.link/pwEjl" target="_blank" rel="noopener" class="d-listen-btn">
+            СЛУШАТЬ <i>↗</i>
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <!-- 07. В твоём ритме -->
+    <article class="disco-card" data-category="single">
+      <div class="disco-card-cover">
+        <img src="In%20Your%20Rhythm.png" alt="В твоём ритме">
+      </div>
+      <div class="disco-card-info">
+        <div class="d-meta"><span>СИНГЛ</span> · <span>17.04.2026</span></div>
+        <h3>В ТВОЁМ РИТМЕ</h3>
+        <a href="https://band.link/o4Bxq" target="_blank" rel="noopener" class="d-listen-btn">
+          СЛУШАТЬ <i>↗</i>
+        </a>
+      </div>
+    </article>
+
+    <!-- 08. На своём месте -->
+    <article class="disco-card" data-category="single">
+      <div class="disco-card-cover">
+        <img src="na_svoem_meste.png" alt="На своём месте">
+      </div>
+      <div class="disco-card-info">
+        <div class="d-meta"><span>СИНГЛ</span> · <span>20.03.2026</span></div>
+        <h3>НА СВОЁМ МЕСТЕ</h3>
+        <a href="https://band.link/fv9Wl" target="_blank" rel="noopener" class="d-listen-btn">
+          СЛУШАТЬ <i>↗</i>
+        </a>
+      </div>
+    </article>
+
+    <!-- 09. Радиопомехи -->
+    <article class="disco-card" data-category="single">
+      <div class="disco-card-cover">
+        <img src="Radio-Interference.jpg" alt="Радиопомехи">
+      </div>
+      <div class="disco-card-info">
+        <div class="d-meta"><span>СИНГЛ</span> · <span>03.02.2026</span></div>
+        <h3>РАДИОПОМЕХИ</h3>
+        <a href="https://band.link/2IRfF" target="_blank" rel="noopener" class="d-listen-btn">
+          СЛУШАТЬ <i>↗</i>
+        </a>
+      </div>
+    </article>
+
+  </section>
+</main>
 
 <footer class="site-footer">
-    <div class="footer-container">
-        <div class="footer-copy">
-            &copy; 2026 W4steR Music. Все права защищены. Независимый артист & музыкальный лейбл.
-        </div>
-        <div class="footer-developer">
-            Разработка сайта — <a href="https://vk.com/ilya_waster" target="_blank" class="dev-link">W4steR Dev.</a> &copy;
-        </div>
-    </div>
+  <div class="footer-left">
+    <a href="index.html" class="footer-logo">
+      <img src="logo.png" alt="W4steR">
+    </a>
+    <span class="footer-copy">© 2026 W4STER MUSIC. ВСЕ ПРАВА ЗАЩИЩЕНЫ.</span>
+  </div>
+
+  <div class="footer-right">
+    <span class="footer-slogan">БОЛЬШЕ ЧЕМ МУЗЫКА.</span>
+    <a href="https://vk.com/ilya_waster" target="_blank" rel="noopener" class="dev-badge">
+      <span>DEV BY</span> <strong>W4STER</strong> <i>↗</i>
+    </a>
+  </div>
 </footer>
 
+<script>
+  // 1. Фильтрация релизов
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('.disco-card');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const filter = btn.getAttribute('data-filter');
+
+      cards.forEach(card => {
+        if (filter === 'all' || card.getAttribute('data-category') === filter) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+
+  // 2. Открытие / закрытие треклиста (без перехода по ссылке)
+  document.querySelectorAll('.tracklist-toggle-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const card = btn.closest('.disco-card');
+      card.classList.toggle('show-tracklist');
+      btn.textContent = card.classList.contains('show-tracklist') ? 'ОБЛОЖКА ▴' : 'ТРЕКИ ▾';
+    });
+  });
+
+  document.querySelectorAll('.tl-close-btn').forEach(closeBtn => {
+    closeBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const card = closeBtn.closest('.disco-card');
+      card.classList.remove('show-tracklist');
+      const toggleBtn = card.querySelector('.tracklist-toggle-btn');
+      if (toggleBtn) toggleBtn.textContent = 'ТРЕКИ ▾';
+    });
+  });
+
+  // 3. Клик по всей площади карточки
+  cards.forEach(card => {
+    card.style.cursor = 'pointer';
+    card.addEventListener('click', (e) => {
+      if (e.target.closest('.tracklist-toggle-btn') || 
+          e.target.closest('.tl-close-btn') || 
+          e.target.closest('.tracklist-overlay')) {
+        return;
+      }
+
+      const link = card.querySelector('.d-listen-btn');
+      if (link && link.href) {
+        window.open(link.href, '_blank', 'noopener');
+      }
+    });
+  });
+</script>
 </body>
 </html>
