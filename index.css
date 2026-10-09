@@ -1022,3 +1022,42 @@
 .next-chapter h2 {text-shadow:0 0 45px rgba(255,161,180,.38),0 10px 36px rgba(6,7,18,.9)}
 .next-chapter-photo {filter:none;transform:scale(1.02)}
 .next-chapter-dim { background: linear-gradient(180deg,rgba(8,10,27,.27),rgba(8,10,27,.55) 62%,rgba(8,10,27,.88)),linear-gradient(90deg,rgba(9,9,29,.24),rgba(9,9,29,.08),rgba(9,9,29,.29)); }
+
+/* Secret release — progressive reveal cards */
+.next-chapter { min-height: 850px; padding-top: 105px; padding-bottom: 95px; }
+.next-chapter-photo {
+  /* PNG запланирован: пока его нет в GitHub, отображается SVG-резерв */
+  background-image: url("zlyuka-teaser-background.png"), url("zlyuka-teaser-fireworks.svg");
+  background-size: cover, cover;
+  background-position: center, center;
+}
+.next-chapter-reveal { width: min(100%, 770px); margin-top: 23px; }
+.next-chapter-reveal h3 {
+  font: 800 11px/1.6 'Inter',sans-serif;
+  color: #ffd1d7; letter-spacing: .25em;
+  margin: 0 0 15px;
+}
+.next-chapter-stages { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 10px; }
+.next-chapter-stage {
+  position:relative; display:flex; flex-direction:column; align-items:center; gap:7px;
+  padding: 20px 8px 16px; min-width:0;
+  background:rgba(18,13,33,.68); border:1px solid rgba(252,202,218,.2);
+  backdrop-filter:blur(12px); box-shadow: 0 14px 38px rgba(0,0,0,.19);
+  transition: transform .2s ease, border-color .2s ease;
+}
+.next-chapter-stage.is-revealed { border-color:rgba(255,190,143,.8); background:linear-gradient(160deg,rgba(141,60,86,.5),rgba(30,20,45,.7)); box-shadow:0 0 22px rgba(255,139,115,.15); }
+.next-chapter-stage-number {position:absolute;top:8px;left:10px;font:700 10px 'Space Mono',monospace;color:#bdaebf;}
+.next-chapter-stage-icon {font-size:25px;line-height:1.2;min-height:30px;}
+.next-chapter-stage-label {font:800 12px 'Inter',sans-serif;letter-spacing:.11em;color:#fff1f3;}
+.next-chapter-stage-state {font:700 9px 'Space Mono',monospace;letter-spacing:.10em;color:#b99eb0;}
+.next-chapter-stage.is-revealed .next-chapter-stage-icon,.next-chapter-stage.is-revealed .next-chapter-stage-state {color:#ffcc9f;}
+.next-chapter-stage.is-locked .next-chapter-stage-icon {filter:grayscale(.45);opacity:.8;}
+.next-chapter-reveal-note { font:500 12px/1.5 'Inter',sans-serif; color:#e0bac8; margin:18px 0 0; }
+@media(max-width:640px) {
+  .next-chapter { min-height: 830px; padding: 78px 16px; }
+  .next-chapter-reveal {margin-top:13px;}
+  .next-chapter-stages {grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;}
+  .next-chapter-stage {padding:17px 6px 12px;gap:5px;}
+  .next-chapter-reveal h3 {font-size:10px;}
+  .next-chapter-reveal-note {font-size:11px;}
+}
