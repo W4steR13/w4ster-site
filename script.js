@@ -67,3 +67,29 @@ document.addEventListener('DOMContentLoaded', () => {
   const tick = setInterval(updateCountdown,1000);
   updateCountdown();
 })();
+
+/* Secret release — interactive clue */
+document.addEventListener('DOMContentLoaded', () => {
+  const trigger=document.querySelector('.nc-reveal-trigger');
+  const dialog=document.getElementById('ncHintDialog');
+  if(!trigger||!dialog)return;
+  const close=()=>{
+    dialog.hidden=true;
+    document.body.style.overflow='';
+    trigger.focus();
+  };
+  trigger.addEventListener('click',()=>{
+    dialog.hidden=false;
+    document.body.style.overflow='hidden';
+    dialog.querySelector('.nc-hint-close').focus();
+  });
+  dialog.querySelectorAll('[data-close-hint]').forEach(x=>x.addEventListener('click',close));
+  document.addEventListener('keydown',e=>{
+    if(dialog.hidden)return;
+    if(e.key==='Escape')close();
+    if(e.key==='Tab'){
+      e.preventDefault();
+      dialog.querySelector('.nc-hint-close').focus();
+    }
+  });
+});
