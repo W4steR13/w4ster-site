@@ -163,7 +163,7 @@
   font-size: 0.8vw;
   font-weight: 900;
   letter-spacing: .25em;
-  color: #ff5e1a;
+  color: #ff361e;
   display: block;
 }
 .hero-copy h1 {
@@ -218,9 +218,9 @@
 .strip-tag i {
   width: 6px;
   height: 6px;
-  background: #ff5e1a;
+  background: #ff361e;
   display: inline-block;
-  box-shadow: 0 0 8px #ff5e1a;
+  box-shadow: 0 0 8px #ff361e;
 }
 .release-strip strong {
   font-family: 'Oswald', sans-serif;
@@ -229,7 +229,7 @@
   text-align: center;
   transition: color .2s;
 }
-.release-strip:hover strong { color: #ff5e1a; }
+.release-strip:hover strong { color: #ff361e; }
 .release-strip .go {
   text-align: right;
   color: #aaa;
@@ -275,7 +275,7 @@
   z-index: 3;
   color: #555;
 }
-.feature-sidebar-right span { color: #ff5e1a; }
+.feature-sidebar-right span { color: #ff361e; }
 
 .feature-stage {
   position: relative;
@@ -293,17 +293,17 @@
   aspect-ratio: 1;
   padding: 4px;
   background: #111;
-  border: 2px solid #ff5e1a;
+  border: 2px solid #ff361e;
   box-shadow: 
-    0 0 35px rgba(255, 94, 26, 0.4),
-    inset 0 0 15px rgba(255, 94, 26, 0.2);
+    0 0 35px rgba(255, 54, 30, 0.4),
+    inset 0 0 15px rgba(255, 54, 30, 0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .cover-wrap:hover {
   transform: scale(1.02) rotate(-1deg);
   box-shadow: 
-    0 0 50px rgba(255, 94, 26, 0.65),
-    inset 0 0 20px rgba(255, 94, 26, 0.35);
+    0 0 50px rgba(255, 54, 30, 0.65),
+    inset 0 0 20px rgba(255, 54, 30, 0.35);
 }
 .cover { display: block; width: 100%; height: 100%; object-fit: cover; }
 
@@ -319,16 +319,16 @@
 .c1 {
   left: -0.8vw;
   top: -0.8vw;
-  border-left: 4px solid #ffaa00;
-  border-top: 4px solid #ffaa00;
-  filter: drop-shadow(0 0 8px #ffaa00);
+  border-left: 4px solid #ff7845;
+  border-top: 4px solid #ff7845;
+  filter: drop-shadow(0 0 8px #ff7845);
 }
 .c2 {
   right: -0.8vw;
   bottom: -0.8vw;
-  border-right: 4px solid #ffaa00;
-  border-bottom: 4px solid #ffaa00;
-  filter: drop-shadow(0 0 8px #ffaa00);
+  border-right: 4px solid #ff7845;
+  border-bottom: 4px solid #ff7845;
+  filter: drop-shadow(0 0 8px #ff7845);
 }
 
 .feature-copy { max-width: 44vw; }
@@ -336,7 +336,7 @@
   font-size: 0.85vw;
   font-weight: 900;
   letter-spacing: 0.25em;
-  color: #ff5e1a;
+  color: #ff361e;
   display: block;
 }
 
@@ -354,8 +354,8 @@
 }
 .release-heading .h-line-pink {
   display: block;
-  color: #ff5e1a;
-  text-shadow: 0 0 35px rgba(255, 94, 26, 0.45);
+  color: #ff361e;
+  text-shadow: 0 0 35px rgba(255, 54, 30, 0.45);
 }
 
 .desc {
@@ -370,7 +370,7 @@
   display: inline-flex;
   justify-content: space-between;
   align-items: center;
-  background: #ff5e1a;
+  background: #ff361e;
   color: #080808;
   padding: 1.2vw 2vw;
   min-height: 58px;
@@ -380,12 +380,12 @@
   font-size: 0.85vw;
   font-weight: 900;
   letter-spacing: 0.14em;
-  box-shadow: 0 0 25px rgba(255, 94, 26, 0.35);
+  box-shadow: 0 0 25px rgba(255, 54, 30, 0.35);
   transition: all 0.25s ease;
 }
 .listen:hover {
-  background: #ffaa00;
-  box-shadow: 0 0 35px rgba(255, 170, 0, 0.5);
+  background: #ff7845;
+  box-shadow: 0 0 35px rgba(255, 120, 69, 0.5);
   transform: translateY(-2px);
 }
 
@@ -902,3 +902,7 @@
 .link-card.full-span-card .card-head span {
   color: var(--pink);
 }
+/* Release era: Не знаю, как это работает */
+.release-heading { font-size: clamp(2.8rem, 5.7vw, 7rem); overflow-wrap: anywhere; }
+.release-heading .h-line-pink { line-height: 1.02; }
+.release-strip strong { font-size: clamp(1rem, 2.15vw, 2.5rem); }
