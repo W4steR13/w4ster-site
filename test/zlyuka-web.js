@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const setPose = (index) => {
     sprite.style.backgroundPosition = (index % 4) * 100 / 3 + '% ' + Math.floor(index / 4) * 25 + '%';
+    sprite.classList.toggle('is-sleeping', index >= 16);
     lastPose = index;
   };
   const isNight = () => {
