@@ -1,0 +1,284 @@
+/* ==========================================================================
+   КАТАЛОГ ДИСКОГРАФИИ (5 КОЛОНОК НА 2K/FHD + ПЛОТНЫЙ ТРЕКЛИСТ)
+   Файл: disco.css
+   ========================================================================== */
+
+.disco-page-main {
+  min-height: 100svh;
+  padding: 120px 4vw 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.ghost-word-disco {
+  position: absolute;
+  right: -2vw;
+  top: 10vh;
+  font: 700 22vw/0.8 'Oswald', sans-serif;
+  color: rgba(255, 255, 255, 0.012);
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.05);
+  letter-spacing: -0.02em;
+  z-index: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.disco-catalog-header {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 36px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 24px;
+}
+
+.disco-catalog-header h1 {
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(44px, 5vw, 84px);
+  line-height: 0.95;
+  margin: 14px 0 22px;
+  letter-spacing: -0.025em;
+}
+.disco-catalog-header h1 span { color: var(--acid); }
+
+.filter-bar {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  background: #111;
+  border: 1px solid #333;
+  color: #888;
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  padding: 9px 18px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  background: var(--pink);
+  border-color: var(--pink);
+  color: #080808;
+  box-shadow: 0 0 15px rgba(255, 43, 145, 0.4);
+}
+
+/* 5 колонок в ряд на широких экранах */
+.disco-cards-grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.3vw;
+  align-items: start;
+}
+
+.disco-card {
+  background: #0f0f0f;
+  border: 1px solid #222;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+  overflow: hidden;
+}
+
+.disco-card:hover {
+  border-color: var(--acid);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(217, 255, 50, 0.15);
+}
+
+.disco-card-cover {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  background: #141414;
+  overflow: hidden;
+}
+
+.disco-card-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+.disco-card:hover .disco-card-cover img {
+  transform: scale(1.03);
+}
+
+.disco-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  padding: 4px 8px;
+  z-index: 2;
+}
+.disco-badge.pink { background: var(--pink); color: #080808; }
+.disco-badge.acid { background: var(--acid); color: #080808; }
+
+/* Оверлей треклиста под 5 колонок */
+.tracklist-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(8, 8, 8, 0.96);
+  backdrop-filter: blur(10px);
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.96);
+  transition: all 0.25s ease;
+  z-index: 3;
+  border-bottom: 2px solid var(--acid);
+}
+
+.disco-card.show-tracklist .tracklist-overlay {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+}
+
+.tl-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #282828;
+  padding-bottom: 8px;
+}
+
+.tl-header span {
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  color: var(--acid);
+}
+
+.tl-close-btn {
+  background: transparent;
+  border: none;
+  color: #777;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 2px;
+  line-height: 1;
+  transition: color 0.2s;
+}
+.tl-close-btn:hover { color: #fff; }
+
+.tl-list {
+  margin: 10px 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  flex-grow: 1;
+  gap: 8px;
+}
+
+.tl-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px dashed #1c1c1c;
+}
+
+.tl-list li:last-child {
+  border-bottom: none;
+}
+
+.tl-list li span {
+  font-family: 'Oswald', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--pink);
+  min-width: 18px;
+}
+
+.tl-list li strong {
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(14px, 1.05vw, 17px);
+  letter-spacing: 0.02em;
+  color: #fff;
+  font-weight: 600;
+}
+
+.disco-card-info {
+  padding: 14px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
+}
+
+.d-meta {
+  font-size: 9px;
+  color: #666;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  margin-bottom: 6px;
+}
+
+.disco-card-info h3 {
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(17px, 1.25vw, 21px);
+  line-height: 1.15;
+  margin: 0 0 14px;
+  color: #fff;
+  letter-spacing: 0.01em;
+}
+
+.card-action-row {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.tracklist-toggle-btn {
+  background: #181818;
+  border: 1px solid #333;
+  color: var(--pink);
+  font-family: 'Inter', sans-serif;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  padding: 8px 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+.tracklist-toggle-btn:hover {
+  border-color: var(--pink);
+  background: rgba(255, 43, 145, 0.12);
+}
+
+.d-listen-btn {
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-grow: 1;
+  padding: 8px 10px;
+  background: #181818;
+  border: 1px solid #333;
+  color: #fff;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  transition: all 0.2s ease;
+}
+.d-listen-btn:hover {
+  background: var(--pink);
+  border-color: var(--pink);
+  color: #080808;
+}

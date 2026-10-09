@@ -1,0 +1,54 @@
+/* Злюка: ненавязчивый хранитель промо-блока. Без фиксированного оверлея. */
+.next-chapter-reveal { position: relative; }
+.nc-pet {
+  position: relative; width: 194px; margin: 30px auto 0;
+  display: flex; justify-content: center; align-items: flex-end;
+  isolation: isolate;
+}
+.nc-pet[hidden], .nc-pet-bubble[hidden] { display:none!important; }
+.nc-pet-button {
+  position: relative; width: 170px; height: 168px; padding: 0;
+  border: 0; background: transparent; cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  filter: drop-shadow(0 15px 16px rgba(5,3,14,.55));
+  transition: transform .24s ease;
+}
+.nc-pet-button:hover { transform: translateY(-5px); }
+.nc-pet-button:focus-visible, .nc-pet-dismiss:focus-visible { outline: 2px solid #ffc3ce; outline-offset: 3px; }
+.nc-pet-sprite {
+  display:block; width:100%; height:100%;
+  background-image:url("zlyuka-web.png");
+  background-repeat:no-repeat;
+  background-size:400% 500%;
+  background-position:0 0;
+}
+.nc-pet-bubble {
+  position: absolute; bottom: calc(100% - 5px); left: 50%;
+  transform: translateX(-50%);
+  width: max-content; max-width: min(280px, 82vw); padding: 11px 14px;
+  border: 1px solid rgba(255,189,204,.6);
+  border-radius: 15px; background: rgba(30,21,43,.94);
+  box-shadow: 0 10px 30px rgba(0,0,0,.4);
+  color: #ffeaf1; font: 500 12px/1.5 'Inter',sans-serif;
+  text-align:center; z-index:2;
+}
+.nc-pet-bubble::after {
+  content:""; position:absolute; top:100%; left:50%;
+  transform:translateX(-50%); border:7px solid transparent;
+  border-top-color:rgba(30,21,43,.94);
+}
+.nc-pet-dismiss {
+  position:absolute; right:-7px; bottom:24px;
+  width:25px; height:25px; border:1px solid rgba(255,193,207,.3);
+  border-radius:50%; background:rgba(19,13,30,.8); color:#f3c1cd;
+  cursor:pointer; font-size:17px; line-height:1;
+  opacity:.6; transition:opacity .2s ease;
+}
+.nc-pet-dismiss:hover { opacity:1; }
+@media(min-width:1050px) {
+  .nc-pet { position:absolute; right:-166px; bottom:0; margin:0; }
+  .nc-pet-bubble { bottom:calc(100% + 2px); }
+}
+@media(prefers-reduced-motion:reduce) {
+  .nc-pet-button,.nc-pet-dismiss {transition:none;}
+}
