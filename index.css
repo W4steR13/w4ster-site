@@ -923,9 +923,9 @@
 .next-chapter-dim { position: absolute; inset: 0; pointer-events: none; }
 .next-chapter-photo {
   z-index: -2;
-  background-image: url("https://commons.wikimedia.org/wiki/Special:FilePath/Lake_Ashi_Setsubun_fireworks_02.jpg?width=1600");
+  background-image: url("zlyuka-teaser-fireworks.svg");
   background-size: cover;
-  background-position: 50% 40%;
+  background-position: center;
   transform: scale(1.045);
   filter: saturate(1.1);
 }
@@ -1011,3 +1011,14 @@
   .next-chapter-credit {font-size: 8px;}
 }
 @media (prefers-reduced-motion: reduce) { .next-chapter-dot {animation:none;} }
+
+/* Locked teaser v2 */
+.next-chapter-lock { display:inline-block; width: 13px; height: 17px; border: 2px solid #ffc6d5; border-radius: 3px; position: relative; font-size:0; margin-right: 5px; background:rgba(255,174,197,.1); }
+.next-chapter-lock::before {content:"";position:absolute;width:7px;height:9px;border:2px solid #ffc6d5;border-bottom:0;border-radius:6px 6px 0 0;left:1px;top:-11px;}
+.next-chapter-lock::after {content:"";position:absolute;width:3px;height:5px;left:3px;top:5px;background:#ffc6d5;border-radius:3px;}
+.next-chapter-timer { position:relative; }
+.next-chapter-timer::before,.next-chapter-timer::after { content:""; position:absolute;top:50%;width:35px;height:1px;background:linear-gradient(90deg,transparent,#f5afbb);opacity:.6; }
+.next-chapter-timer::before {right:calc(100% + 17px);} .next-chapter-timer::after {left:calc(100% + 17px);transform:rotate(180deg);}
+.next-chapter h2 {text-shadow:0 0 45px rgba(255,161,180,.38),0 10px 36px rgba(6,7,18,.9)}
+.next-chapter-photo {filter:none;transform:scale(1.02)}
+.next-chapter-dim { background: linear-gradient(180deg,rgba(8,10,27,.27),rgba(8,10,27,.55) 62%,rgba(8,10,27,.88)),linear-gradient(90deg,rgba(9,9,29,.24),rgba(9,9,29,.08),rgba(9,9,29,.29)); }
