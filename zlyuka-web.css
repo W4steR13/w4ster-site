@@ -58,3 +58,7 @@
 .nc-pet { z-index: 10; }
 .nc-pet-button { touch-action: manipulation; }
 @media(max-width:640px) { .nc-pet {margin-top:12px;} }
+
+/* Sleep frames sit near the bottom of their sprite cells; hide any spillover
+   from the neighboring row without clipping the daytime ear tufts. */
+.nc-pet-sprite.is-sleeping { clip-path: inset(25% 0 0 0); }
