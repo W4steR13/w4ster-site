@@ -46,9 +46,15 @@
 }
 .nc-pet-dismiss:hover { opacity:1; }
 @media(min-width:1050px) {
-  .nc-pet { position:absolute; right:-166px; bottom:0; margin:0; }
+  /* Не выносим за пределы overflow:hidden у секции. */
+  .nc-pet { position:relative; margin:8px 4% 0 auto; }
   .nc-pet-bubble { bottom:calc(100% + 2px); }
 }
 @media(prefers-reduced-motion:reduce) {
   .nc-pet-button,.nc-pet-dismiss {transition:none;}
 }
+
+/* Пет остаётся внутри секции, целиком доступен для клика. */
+.nc-pet { z-index: 10; }
+.nc-pet-button { touch-action: manipulation; }
+@media(max-width:640px) { .nc-pet {margin-top:12px;} }
