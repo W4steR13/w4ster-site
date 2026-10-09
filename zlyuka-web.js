@@ -50,8 +50,10 @@ document.addEventListener('DOMContentLoaded', () => {
     visible = true;
     choosePose();
     // Приветствует один раз за вкладку; не всплывает поверх других разделов.
-    if (!isNight() && !sessionStorage.getItem(heardKey)) {
-      sessionStorage.setItem(heardKey, '1');
+    let greeted = false;
+    try { greeted = sessionStorage.getItem(heardKey) === '1'; } catch (_) {}
+    if (!isNight() && !greeted) {
+      try { sessionStorage.setItem(heardKey, '1'); } catch (_) {}
       setTimeout(() => { if (!pet.hidden && section.getBoundingClientRect().bottom > 0) say('Псс... ты видел? Тут кое-что открылось.'); }, 950);
     }
     poseTimer = setInterval(() => { if (!pet.hidden && !document.hidden) choosePose(); }, 55000);
