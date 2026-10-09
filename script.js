@@ -48,3 +48,22 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+/* NEXT CHAPTER · отсчёт до начала 30 октября (МСК) */
+(() => {
+  const timer = document.getElementById('nextChapterTimer');
+  if (!timer) return;
+  const target = new Date('2026-10-30T00:00:00+03:00').getTime();
+  const fields = ['ncDays','ncHours','ncMinutes','ncSeconds'].map(id=>document.getElementById(id));
+  function updateCountdown() {
+    const remaining = Math.max(0, target - Date.now());
+    const total = Math.floor(remaining / 1000);
+    const values = [Math.floor(total/86400), Math.floor(total/3600)%24, Math.floor(total/60)%60, total%60];
+    fields.forEach((el,index)=>{ if(el) el.textContent=String(values[index]).padStart(2,'0'); });
+    if (remaining===0) {
+      timer.setAttribute('aria-label', '30 октября наступило');
+      clearInterval(tick);
+    }
+  }
+  const tick = setInterval(updateCountdown,1000);
+  updateCountdown();
+})();
