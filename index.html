@@ -136,12 +136,12 @@
       <div class="next-chapter-reveal">
         <h3>ЭТАПЫ РАСКРЫТИЯ</h3>
         <div class="next-chapter-stages" aria-label="Этапы раскрытия анонса">
-          <div class="next-chapter-stage is-revealed">
+          <button type="button" class="next-chapter-stage is-revealed nc-reveal-trigger" aria-haspopup="dialog" aria-controls="ncHintDialog">
             <span class="next-chapter-stage-number">01</span>
             <span class="next-chapter-stage-icon" aria-hidden="true">✦</span>
             <span class="next-chapter-stage-label">ПЕРВЫЙ НАМЁК</span>
-            <span class="next-chapter-stage-state">ОТКРЫТО</span>
-          </div>
+            <span class="next-chapter-stage-state">НАЖМИ, ЧТОБЫ ОТКРЫТЬ</span>
+          </button>
           <div class="next-chapter-stage is-locked">
             <span class="next-chapter-stage-number">02</span>
             <span class="next-chapter-stage-icon" aria-hidden="true"><svg class="nc-lock-svg" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/><circle cx="12" cy="15.5" r="1"/></svg></span>
@@ -162,6 +162,15 @@
           </div>
         </div>
         <p class="next-chapter-reveal-note">До релиза будут открываться новые детали</p>
+        <div class="nc-hint-dialog" id="ncHintDialog" role="dialog" aria-modal="true" aria-labelledby="ncHintText" hidden>
+          <div class="nc-hint-backdrop" data-close-hint></div>
+          <div class="nc-hint-panel">
+            <button class="nc-hint-close" type="button" aria-label="Закрыть подсказку" data-close-hint>×</button>
+            <span class="nc-hint-eyebrow">01 / ПЕРВЫЙ НАМЁК</span>
+            <p id="ncHintText">«Злюка ты.»</p>
+            <span class="nc-hint-bottom">ПРОДОЛЖЕНИЕ СЛЕДУЕТ…</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
