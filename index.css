@@ -1080,3 +1080,18 @@
 .next-chapter-stage.is-revealed {border-color:rgba(255,191,147,.75);}
 .next-chapter-stage.is-revealed .next-chapter-stage-label {color:#ffddc7;}
 @media(max-width:640px){.next-chapter{padding-top:145px;padding-bottom:145px;min-height:1050px}.next-chapter::before,.next-chapter::after{height:130px}.next-chapter-stage-label{font-size:11px}}
+
+/* Interactive first hint */
+.nc-reveal-trigger {cursor:pointer;color:inherit;font-family:inherit;}
+.nc-reveal-trigger:hover,.nc-reveal-trigger:focus-visible {transform:translateY(-4px);box-shadow:0 0 35px rgba(255,144,145,.32);border-color:#ffd3b8;outline-offset:3px;}
+.nc-reveal-trigger .next-chapter-stage-state {font-size:8px;text-align:center;}
+.nc-hint-dialog[hidden] {display:none!important;}
+.nc-hint-dialog {position:fixed;inset:0;z-index:9000;display:grid;place-items:center;padding:20px;}
+.nc-hint-backdrop {position:absolute;inset:0;background:rgba(5,6,19,.85);backdrop-filter:blur(9px);}
+.nc-hint-panel {position:relative;isolation:isolate;width:min(100%,540px);min-height:290px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:25px;padding:45px 35px;background:linear-gradient(145deg,rgba(40,20,50,.9),rgba(10,12,32,.98));border:1px solid rgba(255,185,174,.5);box-shadow:0 0 90px rgba(238,107,133,.22),0 24px 90px #000;text-align:center;}
+.nc-hint-panel::before {content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(circle at 80% 16%,rgba(255,124,121,.18),transparent 55%);}
+.nc-hint-eyebrow,.nc-hint-bottom {font:800 10px/1.5 'Inter',sans-serif;letter-spacing:.21em;color:#f3b7c4;}
+.nc-hint-panel p {margin:0;font:700 clamp(42px,9vw,70px)/1.2 'Oswald',sans-serif;color:#fff1ef;text-shadow:0 0 35px rgba(255,138,153,.55);}
+.nc-hint-close {position:absolute;right:14px;top:8px;background:transparent;color:#fff;border:0;font:400 34px/1 'Inter',sans-serif;cursor:pointer;}
+.nc-hint-close:focus-visible {outline:2px solid #fff;}
+@media(max-width:640px){.nc-hint-panel{min-height:260px;padding:40px 20px;}}
