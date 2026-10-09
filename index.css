@@ -906,3 +906,108 @@
 .release-heading { font-size: clamp(2.8rem, 5.7vw, 7rem); overflow-wrap: anywhere; }
 .release-heading .h-line-pink { line-height: 1.02; }
 .release-strip strong { font-size: clamp(1rem, 2.15vw, 2.5rem); }
+
+/* NEXT CHAPTER: закрытый тизер релиза, отдельная ветка */
+.next-chapter {
+  position: relative;
+  isolation: isolate;
+  min-height: min(780px, 100svh);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  padding: 110px 24px 95px;
+  background: #0c0e20;
+  border-bottom: 1px solid rgba(244,180,195,.24);
+}
+.next-chapter-photo,
+.next-chapter-dim { position: absolute; inset: 0; pointer-events: none; }
+.next-chapter-photo {
+  z-index: -2;
+  background-image: url("https://commons.wikimedia.org/wiki/Special:FilePath/Lake_Ashi_Setsubun_fireworks_02.jpg?width=1600");
+  background-size: cover;
+  background-position: 50% 40%;
+  transform: scale(1.045);
+  filter: saturate(1.1);
+}
+.next-chapter-dim {
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(7,9,24,.52), rgba(8,9,28,.76) 52%, rgba(10,11,27,.94)),
+    linear-gradient(90deg,rgba(15,8,35,.50),rgba(19,9,24,.15),rgba(9,8,32,.54));
+}
+.next-chapter-content {
+  width: min(100%, 850px);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.next-chapter-kicker {
+  font: 800 11px/1.4 'Inter',sans-serif;
+  letter-spacing: .24em;
+  color: #f4b5c5;
+  display: flex; align-items: center; gap: 10px;
+}
+.next-chapter-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: #ffa8a0; box-shadow: 0 0 16px rgba(255,156,169,.8);
+  animation: ncPulse 2.8s ease-in-out infinite;
+}
+.next-chapter h2 {
+  margin: 0;
+  font: 700 clamp(48px, 8.5vw, 118px)/.96 'Oswald',sans-serif;
+  letter-spacing: -.025em;
+  color: white;
+  text-shadow: 0 8px 38px rgba(7,7,25,.8);
+}
+.next-chapter h2 em { color: #ffc4cb; font-style: normal; }
+.next-chapter-subtitle {
+  font: 500 clamp(14px,1.35vw,18px)/1.6 'Inter',sans-serif;
+  color: #f0dce4; margin: 2px 0 16px;
+}
+.next-chapter-timer {
+  display: grid; grid-template-columns: repeat(4,minmax(0,1fr));
+  gap: clamp(7px,1.4vw,16px); width: min(100%,650px);
+}
+.next-chapter-unit {
+  border: 1px solid rgba(255,199,218,.28);
+  background: rgba(25,17,42,.54);
+  box-shadow: inset 0 0 25px rgba(180,112,174,.08), 0 10px 30px rgba(0,0,0,.24);
+  backdrop-filter: blur(14px);
+  padding: clamp(15px,2.2vw,27px) 4px 15px;
+  display: flex; flex-direction:column; align-items:center; gap: 9px;
+}
+.next-chapter-unit strong {
+  font: 600 clamp(30px,4.3vw,64px)/1 'Oswald',sans-serif;
+  font-variant-numeric: tabular-nums;
+  color: #fff2f2;
+}
+.next-chapter-unit span {
+  font: 800 clamp(9px,1vw,11px)/1.3 'Inter',sans-serif;
+  letter-spacing: .14em; color: #e5afc4;
+}
+.next-chapter-date {
+  color: #ffbdc1;
+  letter-spacing: .28em;
+  font: 800 14px/1.6 'Space Mono',monospace;
+  margin-top: 14px;
+}
+.next-chapter-credit {
+  position: absolute; bottom: 10px; right: 16px;
+  font: 400 9px/1.4 'Inter',sans-serif;
+  opacity: .5; color: white; text-align: right;
+}
+@keyframes ncPulse { 50% {opacity:.35; box-shadow:0 0 5px rgba(255,156,169,.3);} }
+@media (max-width: 640px) {
+  .next-chapter { min-height: 690px; padding: 95px 16px 80px; }
+  .next-chapter-photo { background-position: center; }
+  .next-chapter-content {gap: 17px;}
+  .next-chapter-kicker { font-size: 9px; letter-spacing: .15em; }
+  .next-chapter h2 { font-size: clamp(44px,12vw,72px); }
+  .next-chapter-timer {gap: 6px;}
+  .next-chapter-unit { padding: 16px 2px 12px; gap:7px; }
+  .next-chapter-unit strong {font-size: clamp(27px,8vw,40px);}
+  .next-chapter-unit span { font-size: 8px; letter-spacing: .05em; }
+  .next-chapter-credit {font-size: 8px;}
+}
+@media (prefers-reduced-motion: reduce) { .next-chapter-dot {animation:none;} }
