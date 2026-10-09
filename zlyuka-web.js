@@ -38,7 +38,6 @@ document.addEventListener('DOMContentLoaded', () => {
     setPose(next);
   };
   const say = (message) => {
-    if (isNight()) return;
     bubble.textContent = message;
     bubble.hidden = false;
     clearTimeout(speechTimer);
@@ -48,15 +47,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const greet = () => {
     if (visible || pet.hidden) return;
     visible = true;
-    choosePose();
+    setPose(isNight() ? 19 : 0);
     // Приветствует один раз за вкладку; не всплывает поверх других разделов.
     let greeted = false;
     try { greeted = sessionStorage.getItem(heardKey) === '1'; } catch (_) {}
-    if (!isNight() && !greeted) {
+    if (!greeted) {
       try { sessionStorage.setItem(heardKey, '1'); } catch (_) {}
       setTimeout(() => { if (!pet.hidden && section.getBoundingClientRect().bottom > 0) say('Псс... ты видел? Тут кое-что открылось.'); }, 950);
     }
-    poseTimer = setInterval(() => { if (!pet.hidden && !document.hidden) choosePose(); }, 55000);
+    poseTimer = setInterval(() => { if (!pet.hidden && !document.hidden && !isNight()) choosePose(); }, 55000);
     sleepTimer = setInterval(() => {
       if (!pet.hidden && isNight()) {
         bubble.hidden = true;
@@ -74,13 +73,11 @@ document.addEventListener('DOMContentLoaded', () => {
   } else { greet(); }
 
   button.addEventListener('click', () => {
-    if (isNight()) {
-      setPose(19);
-      return;
-    }
+    // Даже ночью Злюка отвечает на клик, а потом спокойно засыпает.
+    setPose(isNight() ? 17 : daytimePoses[Math.floor(Math.random()*daytimePoses.length)]);
     const message = phrases[Math.floor(Math.random() * phrases.length)];
     say(message);
-    choosePose();
+    if (isNight()) setTimeout(() => { if (!pet.hidden) setPose(19); }, 5600);
   });
   dismiss.addEventListener('click', () => {
     pet.hidden = true;
