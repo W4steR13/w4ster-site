@@ -1,0 +1,62 @@
+name: Publish staging to /test
+
+on:
+  push:
+    branches:
+      - release/zlyuka
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: w4ster-staging
+  cancel-in-progress: true
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout website and staging branch
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+          persist-credentials: true
+
+      - name: Refresh /test from release branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin main release/zlyuka
+          git checkout main
+          git pull --ff-only origin main
+          rm -rf test
+          mkdir -p test
+          git archive origin/release/zlyuka | tar -x -C test
+          # Never copy repository tooling or custom-domain control into staging.
+          rm -rf test/.github test/.git test/CNAME
+          printf '%s\n' 'User-agent: *' 'Disallow: /test/' > test/robots.txt
+          # Mark pre-release copy as non-indexable in the page itself.
+          python3 - <<'PY'
+          from pathlib import Path
+          for file in Path("test").glob("*.html"):
+              src = file.read_text(encoding="utf-8")
+              if '<head>' in src and 'name="robots"' not in src:
+                  src = src.replace('<head>', '<head>\n<meta name="robots" content="noindex,nofollow">', 1)
+                  file.write_text(src, encoding="utf-8")
+          PY
+
+      - name: Publish only staging folder
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A -- test/
+          if git diff --cached --quiet; then
+            echo "No staging changes to publish."
+            exit 0
+          fi
+          git commit -m "chore(staging): sync /test from release/zlyuka"
+          git push origin main
