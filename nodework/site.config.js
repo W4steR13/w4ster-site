@@ -5,5 +5,5 @@
 window.NODEWORK_SITE = {
   version: '0.14.0 Alpha',
   downloadUrl: '',
-  repositoryUrl: '',
+  repositoryUrl: 'https://github.com/W4steR13/w4ster-site/tree/release/nodework',
 };
