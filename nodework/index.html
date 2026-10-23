@@ -424,10 +424,10 @@ window.NODEWORK_SITE = { version: '0.14.0 Alpha', downloadUrl: 'https://drive.go
         <div class="rel-copy">
           <div class="kicker">Первая публичная альфа</div>
           <h2 id="dl-t">Долина ждёт <em>хозяина</em></h2>
-          <p>Скоро можно будет скачать сборку для Windows, проверить свою стратегию и помочь игре стать лучше.</p>
+          <p>Первая публичная альфа NODEWORK уже доступна для Windows. Строй производственные цепочки, управляй экономикой долины и делись впечатлениями — твои отзывы помогут сделать игру лучше.</p>
           <div class="meta"><span>Windows · x64</span><span id="ver">0.14.0 Alpha</span><span>W4steR Games</span></div>
-          <a id="dl" class="btn btn-gold" aria-disabled="true" role="link" tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4-4m4 4 4-4M5 20h14"/></svg><span id="dl-t2">Сборка готовится</span></a>
-          <p class="rel-status" id="dl-status">Ссылка появится после проверки публичной сборки.</p>
+          <a id="dl" class="btn btn-gold" href="https://drive.google.com/file/d/1oQOzQ9hlFri5xpSJgGjYzDDgO-FwLlBl/view?usp=sharing" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4-4m4 4 4-4M5 20h14"/></svg><span id="dl-t2">Скачать для Windows</span></a>
+          <p class="rel-status" id="dl-status">Alpha 0.14 · Windows x64 · ZIP на Google Диске. Сохранения могут быть несовместимы с будущими версиями.</p>
         </div>
         <div class="rel-icon"><img src="assets/icon.webp" width="640" height="640" loading="lazy" alt="Иконка NODEWORK: три островка с домом, лесопилкой и мастерской, соединённые светящейся нодой"></div>
       </div>
@@ -470,7 +470,7 @@ window.NODEWORK_SITE = { version: '0.14.0 Alpha', downloadUrl: 'https://drive.go
   if(CFG.repositoryUrl) $('repo').href=CFG.repositoryUrl;
   if(CFG.downloadUrl && /^https:\/\//.test(CFG.downloadUrl)){
     var d=$('dl'); d.href=CFG.downloadUrl; d.removeAttribute('aria-disabled'); d.removeAttribute('tabindex'); d.removeAttribute('role');
-    $('dl-t2').textContent='Скачать для Windows'; $('dl-status').textContent='Прямая ссылка на ZIP со сборкой.';
+    $('dl-t2').textContent='Скачать для Windows';
   }
 
   /* mobile nav */
