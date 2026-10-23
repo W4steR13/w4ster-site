@@ -1,133 +1,592 @@
-<!doctype html>
-<html lang="ru">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#20392d">
-  <meta name="description" content="NODEWORK — уютная экономическая стратегия о производстве, логистике, изменчивом рынке и большой мечте маленькой долины. Игра от W4steR Games.">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="NODEWORK — маленькая долина, большие решения">
-  <meta property="og:description" content="Построй производство, наладь связи, освой рынок. Первая публичная альфа готовится.">
-  <meta property="og:image" content="assets/valley-illustration.webp">
-  <link rel="icon" type="image/png" href="assets/favicon.png">
-  <link rel="preload" as="image" href="assets/valley-illustration.webp">
-  <link rel="stylesheet" href="styles.css">
-  <title>NODEWORK — маленькая долина, большие решения</title>
-  <script defer src="site.config.js"></script>
-  <script defer src="script.js"></script>
-</head>
-<body>
-  <a class="skip-link" href="#main">Перейти к содержимому</a>
-  <div class="site-shell" id="top">
-    <header class="header" id="site-header">
-      <a class="brand" href="#top" aria-label="NODEWORK, на главную">
-        <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
-        <span class="brand-type">NODEWORK<small>маленькая долина · большие решения</small></span>
-      </a>
-      <nav class="nav" id="main-nav" aria-label="Главная навигация">
-        <a href="#world">О долине</a>
-        <a href="#features">Механики</a>
-        <a href="#gallery">Зарисовки</a>
-        <a href="#journal">Дневник</a>
-        <a href="#download" class="nav-cta">Первая альфа <span aria-hidden="true">↗</span></a>
-      </nav>
-      <button class="menu-toggle" aria-label="Открыть меню" aria-expanded="false" aria-controls="main-nav"><span></span><span></span><span></span></button>
-    </header>
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>NODEWORK</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=Unbounded:wght@500;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout concept: a night valley. Full-bleed hero over the valley art with a live node network on top,
+   then a vertical "supply line" of sections: world, market simulator, mechanics, gallery, roadmap, download. */
+:root{
+  --bg:#06120d; --bg-rgb:6,18,13;
+  --bg-2:#0a1b14;
+  --panel:#0f2419;
+  --panel-2:#143022;
+  --line:rgba(150,235,195,.14);
+  --line-strong:rgba(150,235,195,.3);
+  --fg:#e8f4ec;
+  --mute:#8fb0a0;
+  --mint:#46e8aa;
+  --mint-dim:#1d8e68;
+  --gold:#ffb94a;
+  --on-gold:#241603;
+  --on-mint:#03150d;
+  --bad:#ff7d5e;
+  --f-display:'Unbounded','Onest',system-ui,sans-serif;
+  --f-body:'Onest',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --f-mono:'JetBrains Mono',ui-monospace,'SFMono-Regular',Consolas,monospace;
+  --gutter-l:max(16px,env(safe-area-inset-left,0px));
+  --gutter-r:max(16px,env(safe-area-inset-right,0px));
+  --wrap:1200px;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{background:var(--bg);color:var(--fg);font:400 1.0625rem/1.65 var(--f-body);margin:0;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--bg)}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+h1,h2,h3,p{margin:0}
+:focus-visible{outline:2px solid var(--mint);outline-offset:3px;border-radius:6px}
+.wrap{width:100%;max-width:var(--wrap);margin-inline:auto;padding-left:var(--gutter-l);padding-right:var(--gutter-r)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.skip{position:absolute;left:12px;top:-60px;background:var(--mint);color:var(--on-mint);padding:10px 16px;border-radius:8px;z-index:100;font-weight:600}
+.skip:focus{top:calc(env(safe-area-inset-top,0px) + 8px)}
 
-    <main id="main">
-      <section class="hero paper-surface" aria-labelledby="hero-title">
-        <div class="hero-stamp" aria-hidden="true">EST. 2026 <span>✳</span> ДОЛИНА ЖДЁТ</div>
-        <div class="hero-copy">
-          <p class="eyebrow"><span class="eyebrow-line"></span> СТРОЙ. СВЯЗЫВАЙ. РЕШАЙ.</p>
-          <h1 id="hero-title">Здесь всё<br>начинается<br><em>с малого.</em></h1>
-          <p class="hero-intro">Тихая долина, пара построек и большие планы. Создай собственную производственную империю — и попробуй удержать её на плаву.</p>
-          <div class="hero-actions">
-            <a class="button button-primary" href="#download"><span aria-hidden="true">↗</span> Первая альфа</a>
-            <a class="button button-text" href="#world">Узнать об игре <span aria-hidden="true">↘</span></a>
-          </div>
-          <div class="hero-chips"><span>♧ Уютное строительство</span><span>⌁ Живая экономика</span><span>◇ Твоя стратегия</span></div>
+/* ---------- header ---------- */
+.header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(var(--bg-rgb),.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.header .wrap{display:flex;align-items:center;gap:20px;min-height:68px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;margin-right:auto;min-width:0}
+.brand img{width:38px;height:38px;border-radius:10px}
+.brand b{font:800 1.05rem/1 var(--f-display);letter-spacing:.06em}
+.nav{display:flex;align-items:center;gap:6px;flex:none}
+.nav a{text-decoration:none;font-size:.95rem;color:var(--mute);padding:8px 12px;border-radius:999px;transition:color .2s,background .2s}
+.nav a:hover{color:var(--fg);background:rgba(150,235,195,.08)}
+.nav a.cta{white-space:nowrap;color:var(--on-gold);background:var(--gold);font-weight:600;margin-left:8px;padding:9px 18px}
+.nav a.cta:hover{background:#ffc873;color:var(--on-gold)}
+.burger{display:none;width:44px;height:44px;border-radius:12px;border:1px solid var(--line-strong);background:transparent;color:var(--fg);cursor:pointer;align-items:center;justify-content:center}
+.burger svg{width:20px;height:20px}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;gap:10px;font:600 1rem/1 var(--f-body);text-decoration:none;padding:17px 26px;border-radius:14px;border:1px solid transparent;cursor:pointer;transition:transform .2s,background .2s,box-shadow .2s}
+.btn svg{width:18px;height:18px;flex:none}
+.btn-gold{background:var(--gold);color:var(--on-gold);box-shadow:0 10px 36px -10px rgba(255,185,74,.6)}
+.btn-gold:hover{transform:translateY(-2px);background:#ffc873}
+.btn-ghost{border-color:var(--line-strong);color:var(--fg);background:rgba(var(--bg-rgb),.35);backdrop-filter:blur(6px)}
+.btn-ghost:hover{border-color:var(--mint);transform:translateY(-2px)}
+.btn[aria-disabled="true"]{background:var(--panel-2);color:var(--mute);box-shadow:none;border-color:var(--line-strong);cursor:not-allowed}
+.btn[aria-disabled="true"]:hover{transform:none;background:var(--panel-2)}
+
+/* ---------- hero ---------- */
+.hero{position:relative;isolation:isolate;overflow:hidden;border-bottom:1px solid var(--line)}
+.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:68% 50%;z-index:-3;animation:drift 40s ease-in-out infinite alternate}
+@keyframes drift{from{transform:scale(1.04)}to{transform:scale(1.12) translateX(-1.5%)}}
+.hero::before{content:"";position:absolute;inset:0;z-index:-2;background:
+  linear-gradient(90deg,var(--bg) 0%,rgba(var(--bg-rgb),.9) 30%,rgba(var(--bg-rgb),.45) 62%,rgba(var(--bg-rgb),.12) 100%),
+  linear-gradient(180deg,rgba(var(--bg-rgb),.5) 0%,transparent 28%,transparent 60%,var(--bg) 100%)}
+#net{position:absolute;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
+.hero-inner{padding-block:clamp(56px,9vw,128px) clamp(40px,5vw,64px);display:grid;gap:clamp(40px,6vw,72px)}
+.hero-copy{max-width:760px;display:grid;gap:26px;justify-items:start}
+.badge{display:inline-flex;align-items:center;gap:10px;font:500 .78rem/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--mint);border:1px solid var(--line-strong);background:rgba(var(--bg-rgb),.55);padding:9px 14px;border-radius:999px;backdrop-filter:blur(6px)}
+.pulse{width:8px;height:8px;border-radius:50%;background:var(--mint);box-shadow:0 0 0 0 rgba(70,232,170,.7);animation:pulse 2.4s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 10px rgba(70,232,170,0)}100%{box-shadow:0 0 0 0 rgba(70,232,170,0)}}
+h1{font:800 clamp(2.15rem,5.4vw,4.6rem)/1.02 var(--f-display);letter-spacing:-.025em;text-wrap:balance}
+h1 em{font-style:normal;color:var(--gold)}
+.lead{font-size:clamp(1.05rem,1.6vw,1.25rem);color:#c4d9cd;max-width:56ch}
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px}
+.credit{position:absolute;right:max(16px,env(safe-area-inset-right,0px));top:16px;font:400 .72rem/1 var(--f-mono);color:rgba(232,244,236,.7);letter-spacing:.04em}
+
+/* game HUD strip */
+.hud{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid var(--line-strong);border-radius:20px;background:rgba(var(--bg-rgb),.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);overflow:hidden}
+.hud-cell{padding:18px 22px;display:grid;gap:6px;min-width:0;border-right:1px solid var(--line)}
+.hud-cell:last-child{border-right:0}
+.hud-label{font:500 .7rem/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+.hud-val{font:500 clamp(1.15rem,2vw,1.6rem)/1.1 var(--f-mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.hud-val small{font-size:.6em;color:var(--mute);margin-left:4px}
+.hud .gold{color:var(--gold)} .hud .mint{color:var(--mint)}
+.bar{height:4px;border-radius:4px;background:rgba(150,235,195,.14);overflow:hidden}
+.bar i{display:block;height:100%;background:var(--mint);border-radius:4px;width:0}
+.hud-note{font:400 .74rem/1.4 var(--f-mono);color:var(--mute);margin-top:12px}
+
+/* ---------- sections ---------- */
+section{padding-block:clamp(72px,10vw,140px)}
+.kicker{display:flex;align-items:center;gap:12px;font:500 .78rem/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--mint);margin-bottom:22px}
+.kicker::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--mint);box-shadow:0 0 14px var(--mint)}
+.kicker::after{content:"";height:1px;width:56px;background:linear-gradient(90deg,var(--mint-dim),transparent)}
+h2{font:800 clamp(1.8rem,3.9vw,3.2rem)/1.06 var(--f-display);letter-spacing:-.02em;text-wrap:balance}
+h2 em{font-style:normal;color:var(--gold)}
+h3{font:700 1.15rem/1.25 var(--f-display);letter-spacing:-.01em}
+.sec-lede{color:var(--mute);font-size:1.12rem;max-width:58ch;margin-top:20px}
+
+/* world */
+.world-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,6vw,88px);align-items:center}
+.world-copy{display:grid;gap:20px}
+.world-copy p{color:#b9d0c3}
+blockquote{margin:12px 0 0;padding:4px 0 4px 22px;border-left:2px solid var(--gold);font:500 1.15rem/1.5 var(--f-body);color:var(--fg)}
+blockquote cite{display:block;margin-top:10px;font:400 .8rem/1 var(--f-mono);color:var(--mute);font-style:normal;letter-spacing:.04em}
+.window{border:1px solid var(--line-strong);border-radius:18px;overflow:hidden;background:var(--panel);box-shadow:0 40px 90px -30px rgba(0,0,0,.8),0 0 0 1px rgba(0,0,0,.4),0 0 80px -30px rgba(70,232,170,.4)}
+.window-bar{display:flex;align-items:center;gap:7px;padding:11px 14px;border-bottom:1px solid var(--line);background:var(--panel-2)}
+.window-bar i{width:10px;height:10px;border-radius:50%;background:rgba(150,235,195,.22)}
+.window-bar span{margin-left:8px;font:400 .72rem/1 var(--f-mono);color:var(--mute);letter-spacing:.04em}
+.window img{width:100%}
+
+/* market simulator */
+.sim-sec{background:linear-gradient(180deg,var(--bg),var(--bg-2) 20%,var(--bg-2) 80%,var(--bg));border-block:1px solid var(--line)}
+.sim-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,72px);align-items:end;margin-bottom:48px}
+.sim-head .sec-lede{margin-top:0}
+.sim{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:20px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:clamp(20px,3vw,32px)}
+.chart-wrap{min-width:0}
+.chart-title{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font:500 .75rem/1.3 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--mute);margin-bottom:12px}
+#chart{width:100%;height:auto;display:block}
+#chart text{font:400 11px var(--f-mono);fill:var(--mute)}
+.ctl{display:grid;gap:22px;align-content:start}
+.ctl label{display:flex;justify-content:space-between;align-items:baseline;font-weight:600;gap:12px}
+.ctl label output{font:500 1.35rem/1 var(--f-mono);color:var(--gold);font-variant-numeric:tabular-nums}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:36px;background:transparent;margin:8px 0 0;cursor:pointer}
+input[type=range]::-webkit-slider-runnable-track{height:6px;border-radius:6px;background:linear-gradient(90deg,var(--mint-dim),var(--mint) 33%,var(--gold) 55%,var(--bad))}
+input[type=range]::-moz-range-track{height:6px;border-radius:6px;background:linear-gradient(90deg,var(--mint-dim),var(--mint) 33%,var(--gold) 55%,var(--bad))}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;border-radius:50%;background:var(--fg);border:5px solid var(--bg);margin-top:-10px;box-shadow:0 0 0 2px var(--fg),0 4px 14px rgba(0,0,0,.6)}
+input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:var(--fg);border:5px solid var(--bg);box-shadow:0 0 0 2px var(--fg)}
+.range-scale{display:flex;justify-content:space-between;font:400 .7rem/1 var(--f-mono);color:var(--mute)}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.stat{background:var(--bg-2);border:1px solid var(--line);border-radius:14px;padding:14px 16px;display:grid;gap:8px;min-width:0}
+.stat .hud-label{font-size:.66rem}
+.stat b{font:500 1.35rem/1 var(--f-mono);font-variant-numeric:tabular-nums}
+.verdict{display:flex;gap:14px;align-items:flex-start;border-radius:14px;padding:16px;border:1px solid var(--line-strong);background:var(--bg-2);font-size:.98rem;line-height:1.5;transition:border-color .3s,background .3s}
+.verdict .dot{flex:none;width:12px;height:12px;border-radius:50%;margin-top:6px;background:var(--mint);box-shadow:0 0 12px var(--mint);transition:background .3s,box-shadow .3s}
+.verdict strong{display:block;font:700 1rem/1.3 var(--f-display);margin-bottom:4px}
+.verdict[data-s=warn] .dot{background:var(--gold);box-shadow:0 0 12px var(--gold)} .verdict[data-s=warn]{border-color:rgba(255,185,74,.4)}
+.verdict[data-s=bad] .dot{background:var(--bad);box-shadow:0 0 12px var(--bad)} .verdict[data-s=bad]{border-color:rgba(255,125,94,.45)}
+.fine{font:400 .78rem/1.5 var(--f-mono);color:var(--mute);margin-top:18px}
+
+/* features */
+.feat-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:16px;margin-top:56px}
+.feat{grid-column:span 6;position:relative;overflow:hidden;background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:clamp(24px,3vw,36px);display:grid;gap:14px;align-content:start;transition:border-color .25s,transform .25s}
+.feat:hover{border-color:var(--line-strong);transform:translateY(-3px)}
+.feat::after{content:"";position:absolute;right:-60px;top:-60px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(70,232,170,.16),transparent 70%);transition:opacity .3s;opacity:.6}
+.feat:hover::after{opacity:1}
+.feat .ico{width:52px;height:52px;border-radius:14px;border:1px solid var(--line-strong);display:grid;place-items:center;color:var(--mint);background:var(--bg-2)}
+.feat .ico svg{width:28px;height:28px}
+.feat p{color:#b3cabd;max-width:46ch}
+.feat.wide{grid-column:span 12;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(20px,4vw,56px);align-items:center;padding:clamp(24px,3vw,40px)}
+.feat.wide .txt{display:grid;gap:14px}
+.feat.wide .window{box-shadow:0 20px 50px -20px rgba(0,0,0,.8)}
+.strat{margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.strat .panel{display:grid;gap:12px;align-content:start}
+.tag{display:inline-block;font:500 .7rem/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;padding:7px 10px;border-radius:999px;border:1px solid var(--line-strong);justify-self:start}
+.tag.risk{color:var(--gold);border-color:rgba(255,185,74,.4)}
+.tag.calm{color:var(--mint)}
+.strat p{color:#b3cabd}
+
+/* gallery */
+.gal-head{display:grid;gap:18px;margin-bottom:48px;max-width:760px}
+.gal-head p{color:var(--mute);font-size:1.1rem}
+.bento{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:16px}
+.shot{position:relative;display:block;padding:0;border:1px solid var(--line-strong);border-radius:20px;overflow:hidden;background:var(--panel);cursor:zoom-in;color:inherit;font:inherit;text-align:left;aspect-ratio:16/10;transition:transform .3s,border-color .3s}
+.shot img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.shot:hover{border-color:var(--mint);transform:translateY(-3px)}
+.shot:hover img{transform:scale(1.04)}
+.shot figcaption,.shot .cap{position:absolute;left:0;right:0;bottom:0;padding:44px 20px 16px;display:flex;justify-content:space-between;align-items:flex-end;gap:12px;background:linear-gradient(0deg,rgba(var(--bg-rgb),.92),transparent);font-weight:600;font-size:.95rem}
+.cap span{font:400 .72rem/1.3 var(--f-mono);color:var(--mint);letter-spacing:.06em;white-space:nowrap}
+.s1{grid-column:span 4;aspect-ratio:auto;min-height:340px}
+.s2{grid-column:span 2;aspect-ratio:auto;min-height:340px}
+.s3{grid-column:span 3}
+.s4{grid-column:span 3}
+.s2 img{object-position:50% 40%}
+.s4 img{object-position:50% 50%}
+.gal-note{font:400 .78rem/1.5 var(--f-mono);color:var(--mute);margin-top:20px}
+
+/* roadmap */
+.road{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,6vw,88px);align-items:start}
+.road-head{display:grid;gap:20px;position:sticky;top:104px}
+.road-head p{color:var(--mute);font-size:1.1rem}
+.tl{position:relative;display:grid;gap:16px;padding-left:36px}
+.tl::before{content:"";position:absolute;left:11px;top:14px;bottom:14px;width:2px;background:linear-gradient(180deg,var(--gold),var(--mint) 45%,var(--line) 100%)}
+.step{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:clamp(20px,2.6vw,30px);display:grid;gap:10px}
+.step::before{content:"";position:absolute;left:-32px;top:30px;width:14px;height:14px;border-radius:50%;background:var(--bg);border:2px solid var(--c,var(--mint))}
+.step.now{--c:var(--gold);border-color:rgba(255,185,74,.35)}
+.step.now::before{background:var(--gold);box-shadow:0 0 16px var(--gold)}
+.step.wip{--c:var(--mint)}
+.step.next{--c:var(--mute)}
+.step .tag{color:var(--c);border-color:var(--c)}
+.step p{color:#b3cabd}
+
+/* release */
+.release{position:relative;isolation:isolate;overflow:hidden;border-radius:32px;border:1px solid var(--line-strong);padding:clamp(32px,6vw,80px);display:grid;grid-template-columns:minmax(0,7fr) minmax(0,3fr);gap:32px;align-items:center}
+.release::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(100deg,rgba(var(--bg-rgb),.97) 25%,rgba(var(--bg-rgb),.6) 70%,rgba(var(--bg-rgb),.3)),url(assets/valley-illustration.webp) center/cover}
+.rel-copy{display:grid;gap:22px;justify-items:start}
+.rel-copy p{color:#c4d9cd;max-width:52ch}
+.meta{display:flex;flex-wrap:wrap;gap:10px}
+.meta span{font:500 .78rem/1 var(--f-mono);letter-spacing:.06em;padding:9px 13px;border:1px solid var(--line-strong);border-radius:999px;background:rgba(var(--bg-rgb),.55)}
+.rel-status{font:400 .8rem/1.5 var(--f-mono);color:var(--mute);max-width:44ch}
+.rel-icon{justify-self:center;width:min(100%,260px);filter:drop-shadow(0 0 50px rgba(70,232,170,.45));animation:float 6s ease-in-out infinite}
+.rel-icon img{border-radius:22%}
+@keyframes float{50%{transform:translateY(-10px)}}
+.after{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:22px;font:400 .85rem/1.5 var(--f-mono);color:var(--mute)}
+.after a{text-decoration:none;color:var(--mint)}
+
+/* footer */
+footer{border-top:1px solid var(--line);padding-block:48px 56px}
+.foot{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:32px;align-items:center}
+.foot-brand{display:flex;gap:18px;align-items:center}
+.foot-brand img.logo{width:84px;height:auto}
+.foot-brand p{color:var(--mute);font-size:.92rem;line-height:1.5}
+.foot-brand strong{display:block;color:var(--fg);font-family:var(--f-display);font-size:1rem;margin-bottom:4px;letter-spacing:.04em}
+.foot-links{display:flex;flex-wrap:wrap;gap:6px 22px}
+.foot-links a{color:var(--mute);text-decoration:none;font-size:.95rem}
+.foot-links a:hover{color:var(--mint)}
+.copy{margin-top:36px;padding-top:20px;border-top:1px solid var(--line);font:400 .78rem/1.5 var(--f-mono);color:var(--mute);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:200;background:rgba(3,9,6,.94);backdrop-filter:blur(10px);display:grid;place-items:center;padding:calc(env(safe-area-inset-top,0px) + 56px) var(--gutter-r) calc(env(safe-area-inset-bottom,0px) + 72px) var(--gutter-l)}
+.lb img{max-width:min(100%,1500px);max-height:100%;width:auto;height:auto;border-radius:14px;border:1px solid var(--line-strong);box-shadow:0 30px 100px rgba(0,0,0,.8)}
+.lb-bar{position:absolute;left:var(--gutter-l);right:var(--gutter-r);bottom:calc(env(safe-area-inset-bottom,0px) + 16px);display:flex;justify-content:space-between;align-items:center;gap:12px;font:500 .85rem/1.3 var(--f-mono);color:var(--mute)}
+.lb button{width:46px;height:46px;border-radius:50%;border:1px solid var(--line-strong);background:var(--panel);color:var(--fg);cursor:pointer;display:inline-grid;place-items:center}
+.lb button:hover{border-color:var(--mint)}
+.lb-close{position:absolute;top:calc(env(safe-area-inset-top,0px) + 12px);right:var(--gutter-r)}
+.lb button svg{width:20px;height:20px}
+.lb-nav{display:flex;gap:10px}
+
+/* responsive */
+@media (max-width:980px){
+  .nav a:not(.cta){display:none}
+  .burger{display:inline-flex}
+  .nav.open{position:absolute;left:0;right:0;top:100%;flex-direction:column;align-items:stretch;gap:2px;background:var(--bg);border-bottom:1px solid var(--line);padding:12px var(--gutter-r) 20px var(--gutter-l)}
+  .nav.open a:not(.cta){display:block;padding:14px 12px;font-size:1.05rem}
+  .nav.open a.cta{margin:8px 0 0;text-align:center}
+  .world-grid,.road,.sim,.sim-head,.release,.feat.wide{grid-template-columns:minmax(0,1fr)}
+  .road-head{position:static}
+  .hud{grid-template-columns:1fr 1fr}
+  .hud-cell:nth-child(2){border-right:0}
+  .hud-cell:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .rel-icon{display:none}
+  .credit{display:none}
+}
+@media (max-width:700px){
+  .header .wrap{gap:12px}
+  .nav a.cta{padding:9px 14px;font-size:.9rem;margin-left:0}
+  .feat,.strat{grid-column:span 12;grid-template-columns:minmax(0,1fr)}
+  .s1,.s2,.s3,.s4{grid-column:span 6;min-height:0;aspect-ratio:16/10}
+  .foot{grid-template-columns:minmax(0,1fr)}
+  .hud-cell{padding:14px 16px}
+  .btn{padding:16px 22px}
+  .hero::before{background:linear-gradient(180deg,rgba(var(--bg-rgb),.7) 0%,rgba(var(--bg-rgb),.82) 55%,var(--bg) 100%)}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+
+<script>/*CONFIG*/
+/* Укажи прямой HTTPS-адрес сборки, когда она будет проверена. Пока адрес пуст, сайт честно пишет «Сборка готовится». */
+window.NODEWORK_SITE = { version: '0.14.0 Alpha', downloadUrl: '', repositoryUrl: '' };
+/*ENDCONFIG*/</script>
+
+<a class="skip" href="#main">К содержимому</a>
+
+<header class="header" id="top">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="NODEWORK, наверх">
+      <img src="assets/icon.webp" alt="" width="38" height="38"><b>NODEWORK</b>
+    </a>
+    <nav class="nav" id="nav" aria-label="Главная навигация">
+      <a href="#world">Игра</a>
+      <a href="#market">Рынок</a>
+      <a href="#features">Механики</a>
+      <a href="#gallery">Скриншоты</a>
+      <a href="#roadmap">Дорожная карта</a>
+      <a class="cta" href="#download">Скачать альфу</a>
+    </nav>
+    <button class="burger" id="burger" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="nav">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+  <div class="hero">
+    <img class="hero-bg" src="assets/valley-illustration.webp" alt="Иллюстрация: долина с рекой, водопадом, фермами и дымящими мастерскими" width="1672" height="941" fetchpriority="high">
+    <canvas id="net" aria-hidden="true"></canvas>
+    <span class="credit">иллюстрация, не скриншот игры</span>
+    <div class="wrap hero-inner">
+      <div class="hero-copy">
+        <span class="badge"><i class="pulse"></i> Публичная альфа · Windows</span>
+        <h1>Маленькая долина. <em>Большие решения.</em></h1>
+        <p class="lead">NODEWORK — уютная экономическая стратегия. Строй мастерские, соединяй их в производственные цепочки и держи равновесие на живом рынке.</p>
+        <div class="hero-actions">
+          <a class="btn btn-gold" href="#download"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4-4m4 4 4-4M5 20h14"/></svg>Первая альфа</a>
+          <a class="btn btn-ghost" href="#market">Попробовать рынок</a>
         </div>
-        <div class="hero-art-wrap">
-          <div class="ornament-branches" aria-hidden="true"><svg viewBox="0 0 220 130" fill="none"><path d="M0 92C70 83 119 61 205 5" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M59 77C54 48 64 34 83 17M92 66C104 39 120 27 145 15M127 48C149 56 167 54 193 39M51 79C38 59 25 51 7 49" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></div>
-          <figure class="hero-photo photo-paper">
-            <img src="assets/valley-illustration.webp" alt="Иллюстрация уютной долины с лесами, водой, домиками и небольшой промышленностью" width="1672" height="941" fetchpriority="high">
-            <figcaption>Место для твоей истории <span>✿</span> Иллюстрация, не скриншот игры</figcaption>
-          </figure>
-          <div class="photo-tape tape-top" aria-hidden="true"></div>
-          <div class="note hand-note"><span class="hand-icon" aria-hidden="true">↗</span> У каждого<br>мира свой<br>характер.</div>
-          <div class="wax-seal" aria-hidden="true">N<span>W</span></div>
+      </div>
+      <div>
+        <div class="hud" role="group" aria-label="Пример игровой панели">
+          <div class="hud-cell"><span class="hud-label">Монеты</span><span class="hud-val gold" id="h-coins">412 564</span></div>
+          <div class="hud-cell"><span class="hud-label">Доход</span><span class="hud-val mint">+28,6<small>мон./с</small></span></div>
+          <div class="hud-cell"><span class="hud-label">Склад</span><span class="hud-val">9 342<small>/ 21 750</small></span><div class="bar"><i style="width:43%"></i></div></div>
+          <div class="hud-cell"><span class="hud-label">Месяц <span id="h-month">134</span></span><span class="hud-val"><span id="h-sec">30</span><small>сек. до конца</small></span><div class="bar"><i id="h-bar"></i></div></div>
         </div>
-        <div class="hero-bottom-art" aria-hidden="true">✺ ✺ ✺</div>
-      </section>
-
-      <div class="wood-banner"><div class="banner-inner">✦ &nbsp; Не спеши. Но и про рынок не забывай. &nbsp; ✦</div></div>
-
-      <section class="section world" id="world" aria-labelledby="world-title">
-        <div class="section-heading"><span class="chapter">ГЛАВА 01 <i></i></span><span class="side-script">Записки из долины</span></div>
-        <div class="world-grid">
-          <div class="world-copy">
-            <h2 id="world-title">Маленький мир.<br><em>Большие последствия.</em></h2>
-            <p>В NODEWORK ты начинаешь с малого участка земли. Добываешь ресурсы, строишь мастерские и фабрики, соединяешь производства в работающие цепочки.</p>
-            <p>Но долина живёт по своим законам. Спрос меняется, склады переполняются, а вчерашняя прибыльная идея сегодня может стать самой дорогой ошибкой.</p>
-            <div class="quote">«Здесь важно не сколько построено, а как всё работает вместе»<span>— из записок разработчика</span></div>
-          </div>
-          <div class="world-visual">
-            <figure class="snapshot snapshot-main"><img src="assets/gameplay-industry.webp" width="1166" height="756" loading="lazy" alt="Реальный игровой скриншот NODEWORK: промышленная долина с множеством построек"><figcaption>Сначала всё кажется простым.</figcaption></figure>
-            <div class="mini-note">01 / Твоя долина<br><strong>Твои решения.</strong></div>
-            <div class="doodle-circle" aria-hidden="true"></div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section features" id="features" aria-labelledby="features-title">
-        <div class="section-heading"><span class="chapter">ГЛАВА 02 <i></i></span><span class="side-script">Как здесь всё устроено</span></div>
-        <h2 id="features-title">Своя долина.<br><em>Свои правила.</em></h2>
-        <p class="section-lede">Каждое решение связывает ресурсы, деньги и возможности. Универсального рецепта нет — и в этом всё удовольствие.</p>
-        <div class="feature-grid">
-          <article class="feature-card"><div class="feature-number">01 <span>↗</span></div><div class="feature-symbol" aria-hidden="true">▥</div><h3>Строй и развивай</h3><p>Покупай землю, возводи мастерские, добывай ресурсы и открывай новые производства.</p><div class="feature-underline"></div></article>
-          <article class="feature-card"><div class="feature-number">02 <span>↗</span></div><div class="feature-symbol" aria-hidden="true">⌘</div><h3>Соединяй цепочки</h3><p>Связывай здания в производственную сеть, управляй потоками и находи узкие места.</p><div class="feature-underline"></div></article>
-          <article class="feature-card"><div class="feature-number">03 <span>↗</span></div><div class="feature-symbol" aria-hidden="true">⌁</div><h3>Чувствуй рынок</h3><p>Следи за спросом и расходами. Перепроизводство способно превратить прибыль в убытки.</p><div class="feature-underline"></div></article>
-          <article class="feature-card"><div class="feature-number">04 <span>↗</span></div><div class="feature-symbol" aria-hidden="true">✧</div><h3>Иди к «Горизонту»</h3><p>Выполняй контракты, изучай технологии и шаг за шагом развивай главный проект долины.</p><div class="feature-underline"></div></article>
-        </div>
-      </section>
-
-      <section class="section gallery" id="gallery" aria-labelledby="gallery-title">
-        <div class="section-heading"><span class="chapter">ГЛАВА 03 <i></i></span><span class="side-script">Не рисунки — настоящая игра</span></div>
-        <div class="gallery-top"><div><h2 id="gallery-title">Зарисовки<br><em>из настоящей игры.</em></h2><p>Скриншоты рабочих сборок. Всё ещё меняется — особенно когда кто-нибудь находит способ сломать экономику.</p></div><div class="gallery-sticker">СНЯТО<br>В ДОЛИНЕ <span>✱</span></div></div>
-        <div class="gallery-grid">
-          <button class="gallery-photo first" type="button" data-gallery="0" aria-label="Увеличить скриншот: производственная долина"><span class="tape" aria-hidden="true"></span><img src="assets/gameplay-industry.webp" loading="lazy" alt="Промышленная долина с постройками"><span class="gallery-caption">01 — Заводы и мастерские <b>↗</b></span></button>
-          <button class="gallery-photo second" type="button" data-gallery="1" aria-label="Увеличить скриншот: производственная сеть"><span class="tape" aria-hidden="true"></span><img src="assets/gameplay-network.webp" loading="lazy" alt="Производственная сеть с десятками разноцветных связей"><span class="gallery-caption">02 — Ноды и связи <b>↗</b></span></button>
-          <button class="gallery-photo third" type="button" data-gallery="2" aria-label="Увеличить скриншот: рынок"><span class="tape" aria-hidden="true"></span><img src="assets/gameplay-market.webp" loading="lazy" alt="Интерфейс рынка и спроса в NODEWORK"><span class="gallery-caption">03 — Рынок и спрос <b>↗</b></span></button>
-          <button class="gallery-photo fourth" type="button" data-gallery="3" aria-label="Увеличить скриншот: поселение"><span class="tape" aria-hidden="true"></span><img src="assets/gameplay-village.webp" loading="lazy" alt="Игровой мир NODEWORK, окружённый поселением"><span class="gallery-caption">04 — Посёлок вокруг долины <b>↗</b></span></button>
-        </div>
-        <p class="gallery-footnote">Нажми на фотографию, чтобы посмотреть её крупнее. Скриншоты сделаны в процессе разработки и могут отличаться от релизной версии.</p>
-      </section>
-
-      <section class="section journal" id="journal" aria-labelledby="journal-title">
-        <div class="section-heading"><span class="chapter">ГЛАВА 04 <i></i></span><span class="side-script">Письма из мастерской</span></div>
-        <div class="journal-grid">
-          <div class="journal-heading"><h2 id="journal-title">Игра растёт.<br><em>Вместе с долиной.</em></h2><p>NODEWORK — самостоятельный проект W4steR Games, который постепенно превращается из эксперимента с нодами в экономическую стратегию.</p><div class="journal-sketch" aria-hidden="true">✻<span>↗</span></div></div>
-          <div class="journal-posts">
-            <article class="journal-post"><span class="post-tag">СЕЙЧАС / ALPHA</span><div><h3>Уже можно строить империю</h3><p>Производственные цепочки, исследование технологий, склады, рыночный спрос, контракты и проект «Горизонт».</p></div><span class="post-symbol">01</span></article>
-            <article class="journal-post"><span class="post-tag">В РАБОТЕ</span><div><h3>Доводим до первого релиза</h3><p>Полноценное меню, сохранения, загрузка мира, оптимизация и проверки баланса на разных стилях игры.</p></div><span class="post-symbol">02</span></article>
-            <article class="journal-post"><span class="post-tag">ДАЛЬШЕ</span><div><h3>Больше причин возвращаться</h3><p>Продолжим развивать разнообразие решений, экономические события и удобство управления без лишней рутины.</p></div><span class="post-symbol">03</span></article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section release" id="download" aria-labelledby="download-title">
-        <div class="release-board">
-          <div class="release-doodle" aria-hidden="true">✺</div>
-          <div class="release-content"><div class="release-kicker">ПЕРВОЕ ПУТЕШЕСТВИЕ</div><h2 id="download-title">Долина ждёт<br><em>своего хозяина.</em></h2><p>NODEWORK готовится к первой публичной альфе. Скоро можно будет скачать сборку для Windows, попробовать свою стратегию и помочь игре стать лучше.</p><div class="release-meta"><span>Windows · 64-bit</span><span id="version-label">0.14.0 Alpha</span><span>W4steR Games</span></div><div class="release-actions"><a id="download-link" class="button button-release is-unavailable" aria-disabled="true" tabindex="-1"><span aria-hidden="true">↓</span> <span id="download-text">Сборка готовится</span></a><span id="release-status" class="release-status">Ссылку добавим после проверки публичной сборки.</span></div></div>
-          <div class="release-stamp" aria-hidden="true">PUBLIC<br>ALPHA <span>✦</span></div>
-        </div>
-        <div class="release-under"><span>Будут ошибки. Будут неожиданности. И обязательно будет что построить.</span><a href="#top">Наверх ↑</a></div>
-      </section>
-    </main>
-
-    <footer class="footer"><div class="footer-top"><div><a class="footer-brand" href="#top">NODEWORK</a><p>Маленькая долина. Большие решения.</p></div><div class="footer-links"><a href="#world">Об игре</a><a href="#gallery">Скриншоты</a><a href="#download">Первая альфа</a><a id="repo-link" href="https://github.com/W4steR13" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div></div><div class="footer-bottom"><span>© <span id="copyright-year">2026</span> W4steR Games · Независимая игровая студия</span><span>Сделано с вниманием к маленьким деталям ✳</span></div></footer>
+        <p class="hud-note">Панель собрана по тестовой сборке, цифры бегут для наглядности.</p>
+      </div>
+    </div>
   </div>
 
-  <dialog id="lightbox" class="lightbox" aria-label="Просмотр скриншота"><div class="lightbox-content"><button type="button" id="close-lightbox" class="lightbox-close" aria-label="Закрыть просмотр">✕</button><img id="lightbox-image" alt=""><div class="lightbox-bottom"><span id="lightbox-title"></span><div><button id="prev-image" type="button" aria-label="Предыдущее изображение">←</button><button id="next-image" type="button" aria-label="Следующее изображение">→</button></div></div></div></dialog>
-</body>
-</html>
+  <section id="world" aria-labelledby="world-t">
+    <div class="wrap world-grid">
+      <div class="world-copy">
+        <div class="kicker">О долине</div>
+        <h2 id="world-t">Маленький мир, <em>большие последствия</em></h2>
+        <p>Ты начинаешь с небольшого участка земли. Добываешь ресурсы, ставишь мастерские и фабрики и связываешь их в работающие цепочки.</p>
+        <p>Долина живёт по своим законам. Спрос меняется, склады переполняются, а вчерашняя прибыльная идея сегодня может оказаться самой дорогой ошибкой.</p>
+        <p>Можно играть неспешно: экономика долины умеет жить сама, пока ты пьёшь чай.</p>
+        <blockquote>Важно не сколько построено, а как всё работает вместе.<cite>из записок разработчика</cite></blockquote>
+      </div>
+      <figure class="window" style="margin:0">
+        <div class="window-bar"><i></i><i></i><i></i><span>NODEWORK 0.14.0 · скриншот из игры</span></div>
+        <img src="assets/gameplay-industry.webp" width="1166" height="756" loading="lazy" alt="Скриншот игры: застроенная долина с мастерскими, складами и цепочками зданий, сверху панель ресурсов и цель «Проект Горизонт»">
+      </figure>
+    </div>
+  </section>
+
+  <section class="sim-sec" id="market" aria-labelledby="market-t">
+    <div class="wrap">
+      <div class="sim-head">
+        <div><div class="kicker">Рынок и спрос</div><h2 id="market-t">Больше не значит <em>лучше</em></h2></div>
+        <p class="sec-lede">Пока ты продаёшь в пределах спроса, платят полную цену. Дальше цена плавно падает. Подвигай ползунок и найди, где заканчивается прибыль.</p>
+      </div>
+      <div class="sim">
+        <div class="panel chart-wrap">
+          <div class="chart-title"><span>Прибыль в секунду от выпуска</span><span>условные монеты</span></div>
+          <svg id="chart" viewBox="0 0 600 316" role="img" aria-label="График прибыли в зависимости от выпуска: растёт до предела спроса, затем падает и уходит в убыток"></svg>
+        </div>
+        <div class="panel ctl">
+          <div>
+            <label for="prod">Сколько производишь <output id="prod-out" for="prod">120%</output></label>
+            <input id="prod" type="range" min="10" max="300" value="120" step="1" aria-describedby="prod-help">
+            <div class="range-scale" id="prod-help"><span>мало</span><span>предел спроса</span><span>перебор</span></div>
+          </div>
+          <div class="stats">
+            <div class="stat"><span class="hud-label">Цена продажи</span><b id="o-price">100%</b></div>
+            <div class="stat"><span class="hud-label">Выручка</span><b id="o-rev">0</b></div>
+            <div class="stat"><span class="hud-label">Затраты</span><b id="o-cost">0</b></div>
+            <div class="stat"><span class="hud-label">Прибыль</span><b id="o-profit">0</b></div>
+          </div>
+          <div class="verdict" id="verdict" data-s="good" aria-live="polite"><i class="dot"></i><div><strong id="v-t"></strong><span id="v-d"></span></div></div>
+        </div>
+      </div>
+      <p class="fine">Упрощённая модель для наглядности: цена падает до 35% от базовой, как в рыночном окне игры. Реальные кривые и цифры в NODEWORK отличаются.</p>
+    </div>
+  </section>
+
+  <section id="features" aria-labelledby="feat-t">
+    <div class="wrap">
+      <div class="kicker">Механики</div>
+      <h2 id="feat-t">Своя долина, <em>свои правила</em></h2>
+      <p class="sec-lede">Каждое решение связывает ресурсы, деньги и возможности. Универсального рецепта нет, и в этом весь интерес.</p>
+      <div class="feat-grid">
+        <article class="feat wide">
+          <div class="txt">
+            <div class="ico"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="8" r="3"/><circle cx="6" cy="24" r="3"/><circle cx="26" cy="16" r="3"/><circle cx="16" cy="16" r="2.5"/><path d="M8.7 9.4 13.8 14.8M8.7 22.6l5.1-5.4M18.5 16h4.5"/></svg></div>
+            <h3>Соединяй цепочки</h3>
+            <p>Связывай здания в производственную сеть, управляй потоками и ищи узкие места. Окно сетей показывает все связи сразу: сколько работает, сколько простаивает, сколько приносит.</p>
+          </div>
+          <figure class="window" style="margin:0"><div class="window-bar"><i></i><i></i><i></i><span>Сети производства · 49 связей</span></div><img src="assets/gameplay-network.webp" width="1600" height="832" loading="lazy" alt="Скриншот игры: экран сетей производства, десятки зданий связаны разноцветными линиями"></figure>
+        </article>
+        <article class="feat"><div class="ico"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14 16 5l12 9"/><path d="M7 13v13h18V13"/><path d="M13 26v-8h6v8"/></svg></div><h3>Строй и развивай</h3><p>Покупай землю, возводи мастерские, добывай ресурсы и открывай новые производства. Участки растут вместе с твоими планами.</p></article>
+        <article class="feat"><div class="ico"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 26V6M4 26h24"/><path d="m8 20 6-6 4 4 8-9"/><path d="M21 9h5v5"/></svg></div><h3>Чувствуй рынок</h3><p>Следи за спросом и расходами. Перепроизводство способно превратить прибыль в убытки, а события вроде «Конкурент сбивает цены» держат в тонусе.</p></article>
+        <article class="feat" style="grid-column:span 12"><div class="ico"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 28V4"/><path d="M6 6h16l-3 5 3 5H6"/></svg></div><h3>Иди к «Горизонту»</h3><p style="max-width:70ch">Выполняй контракты, изучай технологии и шаг за шагом развивай главный проект долины. Пять этапов от фундамента до промышленного каркаса и дальше.</p></article>
+      </div>
+      <div class="strat">
+        <div class="panel"><span class="tag risk">Риск и награда</span><h3>Специализация</h3><p>Выбери одну отрасль и выжми из неё всё. Когда рынок на твоей стороне, долина отвечает щедро. Когда нет, придётся быстро перестраиваться.</p></div>
+        <div class="panel"><span class="tag calm">Ровный ход</span><h3>Разнообразие</h3><p>Разложи яйца по разным корзинам. Доход растёт спокойнее, а удар по одному рынку не валит всю долину.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery" aria-labelledby="gal-t" style="padding-top:0">
+    <div class="wrap">
+      <div class="gal-head"><div class="kicker">Скриншоты</div><h2 id="gal-t">Настоящая игра, <em>без глянца</em></h2><p>Кадры из рабочих сборок. Всё ещё меняется, особенно когда кто-нибудь находит способ сломать экономику.</p></div>
+      <div class="bento">
+        <button class="shot s1" type="button" data-i="0" aria-label="Открыть крупнее: сети производства"><img src="assets/gameplay-network.webp" loading="lazy" alt="Экран сетей производства"><span class="cap">Ноды и связи <span>открыть</span></span></button>
+        <button class="shot s2" type="button" data-i="1" aria-label="Открыть крупнее: рынок и спрос"><img src="assets/gameplay-market.webp" loading="lazy" alt="Окно рынка и спроса с ценами по товарам"><span class="cap">Рынок и спрос <span>открыть</span></span></button>
+        <button class="shot s3" type="button" data-i="2" aria-label="Открыть крупнее: производственная долина"><img src="assets/gameplay-industry.webp" loading="lazy" alt="Застроенная производственная долина"><span class="cap">Заводы и мастерские <span>открыть</span></span></button>
+        <button class="shot s4" type="button" data-i="3" aria-label="Открыть крупнее: посёлок вокруг долины"><img src="assets/gameplay-village.webp" loading="lazy" alt="Посёлок рядом с производственной зоной"><span class="cap">Посёлок вокруг долины <span>открыть</span></span></button>
+      </div>
+      <p class="gal-note">Скриншоты сделаны в отладочной сборке 0.14.0 и могут отличаться от релиза.</p>
+    </div>
+  </section>
+
+  <section id="roadmap" aria-labelledby="road-t" style="padding-top:0">
+    <div class="wrap road">
+      <div class="road-head"><div class="kicker">Дорожная карта</div><h2 id="road-t">Игра растёт <em>вместе с долиной</em></h2><p>NODEWORK — самостоятельный проект W4steR Games. Он постепенно превращается из эксперимента с нодами в полноценную экономическую стратегию.</p></div>
+      <div class="tl">
+        <article class="step now"><span class="tag">Сейчас · альфа</span><h3>Уже можно строить империю</h3><p>Производственные цепочки, исследование технологий, склады, рыночный спрос, контракты и проект «Горизонт».</p></article>
+        <article class="step wip"><span class="tag">В работе</span><h3>Путь к первому релизу</h3><p>Полноценное меню, сохранения, загрузка мира, оптимизация и проверки баланса на разных стилях игры.</p></article>
+        <article class="step next"><span class="tag">Дальше</span><h3>Больше причин возвращаться</h3><p>Разнообразие решений, экономические события и удобное управление без лишней рутины.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="download" aria-labelledby="dl-t" style="padding-top:0">
+    <div class="wrap">
+      <div class="release">
+        <div class="rel-copy">
+          <div class="kicker">Первая публичная альфа</div>
+          <h2 id="dl-t">Долина ждёт <em>хозяина</em></h2>
+          <p>Скоро можно будет скачать сборку для Windows, проверить свою стратегию и помочь игре стать лучше.</p>
+          <div class="meta"><span>Windows · x64</span><span id="ver">0.14.0 Alpha</span><span>W4steR Games</span></div>
+          <a id="dl" class="btn btn-gold" aria-disabled="true" role="link" tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4-4m4 4 4-4M5 20h14"/></svg><span id="dl-t2">Сборка готовится</span></a>
+          <p class="rel-status" id="dl-status">Ссылка появится после проверки публичной сборки.</p>
+        </div>
+        <div class="rel-icon"><img src="assets/icon.webp" width="640" height="640" loading="lazy" alt="Иконка NODEWORK: три островка с домом, лесопилкой и мастерской, соединённые светящейся нодой"></div>
+      </div>
+      <div class="after"><span>Будут ошибки. Будут неожиданности. И обязательно будет что построить.</span><a href="#top">Наверх ↑</a></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <img class="logo" src="assets/w4ster-games-logo.png" width="757" height="600" loading="lazy" alt="Логотип W4steR Games">
+        <p><strong>NODEWORK</strong>Игра независимой студии W4steR Games.</p>
+      </div>
+      <div class="foot-links">
+        <a href="#world">Об игре</a><a href="#gallery">Скриншоты</a><a href="#download">Скачать</a>
+        <a id="repo" href="https://github.com/W4steR13" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      </div>
+    </div>
+    <div class="copy"><span>© <span id="yr">2026</span> W4steR Games</span><span>Маленькая долина. Большие решения.</span></div>
+  </div>
+</footer>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Просмотр скриншота" hidden>
+  <button class="lb-close" id="lb-x" type="button" aria-label="Закрыть"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+  <img id="lb-img" alt="">
+  <div class="lb-bar"><span id="lb-cap"></span><div class="lb-nav"><button id="lb-p" type="button" aria-label="Предыдущий"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 5-7 7 7 7"/></svg></button><button id="lb-n" type="button" aria-label="Следующий"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg></button></div></div>
+</div>
+
+<script>
+(function(){
+  var $=function(id){return document.getElementById(id)};
+  var CFG=window.NODEWORK_SITE||{};
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* release config */
+  $('ver').textContent=CFG.version||'Alpha';
+  $('yr').textContent=new Date().getFullYear();
+  if(CFG.repositoryUrl) $('repo').href=CFG.repositoryUrl;
+  if(CFG.downloadUrl && /^https:\/\//.test(CFG.downloadUrl)){
+    var d=$('dl'); d.href=CFG.downloadUrl; d.removeAttribute('aria-disabled'); d.removeAttribute('tabindex'); d.removeAttribute('role');
+    $('dl-t2').textContent='Скачать для Windows'; $('dl-status').textContent='Прямая ссылка на ZIP со сборкой.';
+  }
+
+  /* mobile nav */
+  var nav=$('nav'), burger=$('burger');
+  burger.addEventListener('click',function(){var o=nav.classList.toggle('open');burger.setAttribute('aria-expanded',o)});
+  nav.addEventListener('click',function(e){if(e.target.tagName==='A'){nav.classList.remove('open');burger.setAttribute('aria-expanded','false')}});
+
+  /* HUD ticker */
+  var coins=412564, sec=30, month=134;
+  function fmt(n){return Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g,' ')}
+  function hud(){ $('h-coins').textContent=fmt(coins); $('h-sec').textContent=sec; $('h-month').textContent=month; $('h-bar').style.width=((30-sec)/30*100)+'%'; }
+  hud();
+  if(!reduce) setInterval(function(){coins+=28.6;sec--;if(sec<0){sec=30;month++}hud()},1000);
+
+  /* node network canvas */
+  var cv=$('net'), cx=cv.getContext('2d'), nodes=[], edges=[], parts=[], W=0,H=0, run=true, mx=0.5, raf=0;
+  function rnd(a,b){return a+Math.random()*(b-a)}
+  function build(){
+    var r=cv.getBoundingClientRect(), dpr=Math.min(window.devicePixelRatio||1,2);
+    W=r.width;H=r.height; cv.width=W*dpr; cv.height=H*dpr; cx.setTransform(dpr,0,0,dpr,0,0);
+    nodes=[];edges=[];parts=[];
+    var count=Math.round(Math.min(34,Math.max(14,W/42))), tries=0;
+    while(nodes.length<count && tries<800){
+      tries++;
+      var x=rnd(W*(W<700?0.04:0.3),W*0.97), y=rnd(H*0.06,H*0.9), ok=true;
+      for(var i=0;i<nodes.length;i++){var dx=nodes[i].x-x,dy=nodes[i].y-y;if(dx*dx+dy*dy<70*70){ok=false;break}}
+      if(ok) nodes.push({x:x,y:y,r:rnd(2.2,4.5),z:rnd(.4,1.2),ph:rnd(0,6.28)});
+    }
+    nodes.forEach(function(a,i){
+      var near=nodes.map(function(b,j){return{j:j,d:(a.x-b.x)*(a.x-b.x)+(a.y-b.y)*(a.y-b.y)}}).filter(function(o){return o.j!==i}).sort(function(p,q){return p.d-q.d}).slice(0,2);
+      near.forEach(function(o){ if(o.d<240*240 && !edges.some(function(e){return(e.a===i&&e.b===o.j)||(e.a===o.j&&e.b===i)})) edges.push({a:i,b:o.j}) });
+    });
+    edges.forEach(function(e,i){ if(i%2===0) parts.push({e:e,t:Math.random(),s:rnd(.0018,.004),dir:Math.random()<.5?1:-1}); });
+  }
+  function draw(time){
+    cx.clearRect(0,0,W,H);
+    var off=(mx-.5)*18;
+    function pos(n){return {x:n.x+off*n.z+Math.sin(time/2200+n.ph)*3, y:n.y+Math.cos(time/2600+n.ph)*3}}
+    cx.lineWidth=1;
+    edges.forEach(function(e){var a=pos(nodes[e.a]),b=pos(nodes[e.b]);cx.strokeStyle='rgba(70,232,170,.28)';cx.beginPath();cx.moveTo(a.x,a.y);cx.lineTo(b.x,b.y);cx.stroke()});
+    nodes.forEach(function(n){var p=pos(n);var g=cx.createRadialGradient(p.x,p.y,0,p.x,p.y,n.r*5);g.addColorStop(0,'rgba(70,232,170,.5)');g.addColorStop(1,'rgba(70,232,170,0)');cx.fillStyle=g;cx.beginPath();cx.arc(p.x,p.y,n.r*5,0,6.283);cx.fill();cx.fillStyle='#46e8aa';cx.beginPath();cx.arc(p.x,p.y,n.r,0,6.283);cx.fill()});
+    parts.forEach(function(p){
+      if(!reduce){p.t+=p.s*p.dir; if(p.t>1||p.t<0){p.dir*=-1;p.t=Math.max(0,Math.min(1,p.t))}}
+      var a=pos(nodes[p.e.a]),b=pos(nodes[p.e.b]),x=a.x+(b.x-a.x)*p.t,y=a.y+(b.y-a.y)*p.t;
+      var g=cx.createRadialGradient(x,y,0,x,y,9);g.addColorStop(0,'rgba(255,185,74,.95)');g.addColorStop(1,'rgba(255,185,74,0)');cx.fillStyle=g;cx.beginPath();cx.arc(x,y,9,0,6.283);cx.fill();
+    });
+  }
+  function loop(t){ if(run) draw(t); raf=requestAnimationFrame(loop) }
+  build(); draw(0);
+  if(!reduce){
+    raf=requestAnimationFrame(loop);
+    if('IntersectionObserver' in window) new IntersectionObserver(function(en){run=en[0].isIntersecting}).observe(cv);
+    cv.parentNode.addEventListener('pointermove',function(e){var r=cv.getBoundingClientRect();mx=(e.clientX-r.left)/r.width});
+  }
+  var rt; window.addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(function(){build();draw(0)},150)});
+
+  /* market simulator */
+  var K=1.2, COST=45, FLOOR=.35, XMAX=3, YMIN=-25, YMAX=62;
+  function price(x){return x<=1?1:FLOOR+(1-FLOOR)*Math.exp(-K*(x-1))}
+  function profit(x){return 100*x*price(x)-COST*x}
+  var L=44,R=584,T=14,B=266;
+  function sx(x){return L+(x/XMAX)*(R-L)}
+  function sy(v){return T+(YMAX-v)/(YMAX-YMIN)*(B-T)}
+  var svg=$('chart'), ns='http://www.w3.org/2000/svg';
+  function el(n,a,p){var e=document.createElementNS(ns,n);for(var k in a)e.setAttribute(k,a[k]);(p||svg).appendChild(e);return e}
+  [-20,0,20,40,60].forEach(function(v){
+    el('line',{x1:L,x2:R,y1:sy(v),y2:sy(v),stroke:v===0?'rgba(232,244,236,.45)':'rgba(150,235,195,.12)','stroke-width':v===0?1.5:1});
+    var t=el('text',{x:L-8,y:sy(v)+4,'text-anchor':'end'});t.textContent=v;
+  });
+  [0,1,2,3].forEach(function(v){
+    el('line',{x1:sx(v),x2:sx(v),y1:T,y2:B,stroke:'rgba(150,235,195,.08)'});
+    var t=el('text',{x:sx(v),y:B+20,'text-anchor':v===0?'start':(v===3?'end':'middle')});t.textContent=v*100+'%';
+  });
+  var xl=el('text',{x:(L+R)/2,y:B+40,'text-anchor':'middle'});xl.textContent='выпуск, % от предела спроса';
+  el('line',{x1:sx(1),x2:sx(1),y1:T,y2:B,stroke:'#46e8aa','stroke-width':1.5,'stroke-dasharray':'4 5'});
+  var lt=el('text',{x:sx(1)+8,y:T+12});lt.style.fill='#46e8aa';lt.textContent='предел спроса';
+  var pts=[],i;for(i=0;i<=150;i++){var x=i/150*XMAX;pts.push((i?'L':'M')+sx(x).toFixed(1)+' '+sy(profit(x)).toFixed(1))}
+  var line=pts.join(' ');
+  el('path',{d:line+' L'+sx(XMAX)+' '+sy(0)+' L'+sx(0)+' '+sy(0)+' Z',fill:'rgba(70,232,170,.1)'});
+  el('path',{d:line,fill:'none',stroke:'#ffb94a','stroke-width':3,'stroke-linejoin':'round','stroke-linecap':'round'});
+  var guide=el('line',{x1:0,x2:0,y1:T,y2:B,stroke:'rgba(232,244,236,.35)','stroke-width':1});
+  var halo=el('circle',{r:12,fill:'rgba(255,185,74,.25)'});
+  var dot=el('circle',{r:6,fill:'#e8f4ec',stroke:'#06120d','stroke-width':3});
+  var sl=$('prod');
+  function fm(v){return (v<0?'−':'')+Math.abs(Math.round(v))}
+  function sim(){
+    var x=sl.value/100, p=price(x), rev=100*x*p, cost=COST*x, pr=rev-cost;
+    $('prod-out').textContent=sl.value+'%';
+    $('o-price').textContent=Math.round(p*100)+'%';
+    $('o-rev').textContent=fm(rev); $('o-cost').textContent=fm(cost);
+    var po=$('o-profit'); po.textContent=(pr>0?'+':'')+fm(pr); po.style.color=pr<0?'var(--bad)':(pr<12?'var(--gold)':'var(--mint)');
+    var cxp=sx(x), cyp=sy(pr);
+    guide.setAttribute('x1',cxp);guide.setAttribute('x2',cxp);
+    dot.setAttribute('cx',cxp);dot.setAttribute('cy',cyp);halo.setAttribute('cx',cxp);halo.setAttribute('cy',cyp);
+    var v=$('verdict'),t,d,s;
+    if(x<.95){s='good';t='Спрос недоиспользован';d='Всё продаётся по полной цене, но долина могла бы дать больше. Есть куда расти.'}
+    else if(x<=1.08){s='good';t='Золотая середина';d='Цена полная, склад не копится. Здесь прибыль почти максимальна.'}
+    else if(pr>=12){s='warn';t='Склад начинает копиться';d='Лишние единицы уходят дешевле. Выручка ещё растёт, но каждая монета даётся дороже.'}
+    else if(pr>=0){s='warn';t='Почти в ноль';d='Цена просела так, что затраты едва окупаются. Пора переключать мощности.'}
+    else{s='bad';t='Перепроизводство';d='Продаёшь ниже себестоимости. Чем больше выпуск, тем глубже убыток.'}
+    v.setAttribute('data-s',s);$('v-t').textContent=t;$('v-d').textContent=d;
+  }
+  sl.addEventListener('input',sim); sim();
+
+  /* lightbox */
+  var shots=[].slice.call(document.querySelectorAll('.shot')), idx=0, lb=$('lb'), last=null;
+  function show(i){idx=(i+shots.length)%shots.length;var b=shots[idx],im=b.querySelector('img');$('lb-img').src=im.currentSrc||im.src;$('lb-img').alt=im.alt;$('lb-cap').textContent=(idx+1)+' / '+shots.length+' · '+b.querySelector('.cap').firstChild.textContent.trim()}
+  function open(i){last=document.activeElement;show(i);lb.hidden=false;document.documentElement.style.overflow='hidden';$('lb-x').focus()}
+  function close(){lb.hidden=true;document.documentElement.style.overflow='';if(last)last.focus()}
+  shots.forEach(function(b,i){b.addEventListener('click',function(){open(i)})});
+  $('lb-x').addEventListener('click',close);
+  $('lb-p').addEventListener('click',function(){show(idx-1)});
+  $('lb-n').addEventListener('click',function(){show(idx+1)});
+  lb.addEventListener('click',function(e){if(e.target===lb)close()});
+  document.addEventListener('keydown',function(e){if(lb.hidden)return;if(e.key==='Escape')close();if(e.key==='ArrowLeft')show(idx-1);if(e.key==='ArrowRight')show(idx+1)});
+})();
+</script>
+
+</body></html>
