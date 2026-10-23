@@ -1,0 +1,51 @@
+name: Publish NODEWORK to /nodework
+
+on:
+  push:
+    branches:
+      - release/nodework
+    paths:
+      - "nodework/**"
+      - ".github/workflows/publish-nodework.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: w4ster-nodework
+  cancel-in-progress: true
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout public site
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+          persist-credentials: true
+
+      - name: Publish NODEWORK only
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin main release/nodework
+          if ! git cat-file -e origin/release/nodework:nodework/index.html 2>/dev/null; then
+            echo "NODEWORK landing page is not uploaded to this branch yet; nothing to deploy."
+            exit 0
+          fi
+          git checkout main
+          git pull --ff-only origin main
+          rm -rf nodework
+          git archive origin/release/nodework nodework | tar -x -C .
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A -- nodework/
+          if git diff --cached --quiet; then
+            echo "No NODEWORK changes to publish."
+            exit 0
+          fi
+          git commit -m "chore(nodework): publish site from release/nodework"
+          git push origin main
