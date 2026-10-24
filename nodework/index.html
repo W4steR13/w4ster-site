@@ -220,7 +220,7 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;bac
 footer{border-top:1px solid var(--line);padding-block:48px 56px}
 .foot{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:32px;align-items:center}
 .foot-brand{display:flex;gap:18px;align-items:center}
-.foot-brand img.logo{width:84px;height:auto}
+.foot-brand img.logo{width:clamp(96px,15vw,154px);height:auto;flex:none}
 .foot-brand p{color:var(--mute);font-size:.92rem;line-height:1.5}
 .foot-brand strong{display:block;color:var(--fg);font-family:var(--f-display);font-size:1rem;margin-bottom:4px;letter-spacing:.04em}
 .foot-links{display:flex;flex-wrap:wrap;gap:6px 22px}
@@ -440,7 +440,7 @@ window.NODEWORK_SITE = { version: '0.14.0 Alpha', downloadUrl: 'https://drive.go
   <div class="wrap">
     <div class="foot">
       <div class="foot-brand">
-        <img class="logo" src="assets/w4ster-games-logo.png" width="757" height="600" loading="lazy" alt="Логотип W4steR Games">
+        <img class="logo" src="assets/w4ster-games-logo-v2.webp" width="320" height="215" loading="lazy" alt="Логотип W4steR Games">
         <p><strong>NODEWORK</strong>Игра независимой студии W4steR Games.</p>
       </div>
       <div class="foot-links">
