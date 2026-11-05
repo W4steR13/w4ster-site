@@ -144,7 +144,7 @@
 
   .hero-copy h1 span.outline {
     display: block;
-    -webkit-text-stroke: 1px #ffffff;
+    -webkit-text-stroke: 1px var(--fg);
   }
 
   .hero-copy > p {
@@ -358,7 +358,7 @@
   }
 
   .manifesto-title .m-line.outline {
-    -webkit-text-stroke: 1px #ffffff;
+    -webkit-text-stroke: 1px var(--fg);
   }
 
   .manifesto-desc {
