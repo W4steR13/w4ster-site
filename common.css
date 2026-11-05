@@ -3,11 +3,11 @@
    ========================================================================== */
 :root {
   --bg: #080808;
-  --fg: #f4f2ed;
-  --muted: #858585;
+  --fg: #dce8f5;
+  --muted: #91a2ba;
   --line: #222222;
-  --pink: #f18b75; /* Коралловый акцент «Две звезды» */
-  --acid: #ffd3ae; /* Тёплый звёздный свет «Две звезды» */
+  --pink: #b68edc; /* Лавандовый акцент «Две звезды» */
+  --acid: #9ecae8; /* Звёздно-голубой акцент «Две звезды» */
   --accent: var(--pink);
 }
 
@@ -145,6 +145,6 @@ a { color: inherit; text-decoration: none; }
 .dev-badge:hover {
   border-color: var(--acid);
   color: #fff;
-  box-shadow: 0 0 12px rgba(255, 170, 0, 0.35);
+  box-shadow: 0 0 12px rgba(158, 202, 232, 0.35);
 }
 .dev-badge:hover i { transform: translate(2px, -2px); }
