@@ -15,8 +15,8 @@
   right: -2vw;
   top: 10vh;
   font: 700 22vw/0.8 'Oswald', sans-serif;
-  color: rgba(255, 255, 255, 0.012);
-  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.05);
+  color: var(--overlay-white-12);
+  -webkit-text-stroke: 1.5px var(--overlay-white-50);
   letter-spacing: -0.02em;
   z-index: 1;
   pointer-events: none;
@@ -47,9 +47,9 @@
 }
 
 .filter-btn {
-  background: #111;
-  border: 1px solid #333;
-  color: #888;
+  background: var(--surface-1);
+  border: 1px solid var(--border-strong);
+  color: var(--text-muted);
   font-family: 'Inter', sans-serif;
   font-size: 10px;
   font-weight: 800;
@@ -63,8 +63,8 @@
 .filter-btn.active {
   background: var(--pink);
   border-color: var(--pink);
-  color: #080808;
-  box-shadow: 0 0 15px rgba(182, 142, 220, 0.4);
+  color: var(--bg);
+  box-shadow: 0 0 15px var(--overlay-lavender-400);
 }
 
 /* 5 колонок в ряд на широких экранах */
@@ -78,8 +78,8 @@
 }
 
 .disco-card {
-  background: #0f0f0f;
-  border: 1px solid #222;
+  background: var(--surface-3);
+  border: 1px solid var(--line);
   display: flex;
   flex-direction: column;
   transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
@@ -89,14 +89,14 @@
 .disco-card:hover {
   border-color: var(--acid);
   transform: translateY(-4px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(158, 202, 232, 0.15);
+  box-shadow: 0 12px 30px var(--overlay-black-800), 0 0 20px var(--overlay-sky-150);
 }
 
 .disco-card-cover {
   position: relative;
   width: 100%;
   aspect-ratio: 1;
-  background: #141414;
+  background: var(--surface-4);
   overflow: hidden;
 }
 
@@ -121,14 +121,14 @@
   padding: 4px 8px;
   z-index: 2;
 }
-.disco-badge.pink { background: var(--pink); color: #080808; }
-.disco-badge.acid { background: var(--acid); color: #080808; }
+.disco-badge.pink { background: var(--pink); color: var(--bg); }
+.disco-badge.acid { background: var(--acid); color: var(--bg); }
 
 /* Оверлей треклиста под 5 колонок */
 .tracklist-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(8, 8, 8, 0.96);
+  background: var(--overlay-near-black-960);
   backdrop-filter: blur(10px);
   padding: 16px 18px;
   display: flex;
@@ -152,7 +152,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #282828;
+  border-bottom: 1px solid var(--border-medium-alt);
   padding-bottom: 8px;
 }
 
@@ -166,14 +166,14 @@
 .tl-close-btn {
   background: transparent;
   border: none;
-  color: #777;
+  color: var(--text-secondary);
   font-size: 16px;
   cursor: pointer;
   padding: 2px;
   line-height: 1;
   transition: color 0.2s;
 }
-.tl-close-btn:hover { color: #fff; }
+.tl-close-btn:hover { color: var(--text-contrast); }
 
 .tl-list {
   margin: 10px 0;
@@ -191,7 +191,7 @@
   align-items: center;
   gap: 10px;
   padding-bottom: 6px;
-  border-bottom: 1px dashed #1c1c1c;
+  border-bottom: 1px dashed var(--border-dashed);
 }
 
 .tl-list li:last-child {
@@ -210,7 +210,7 @@
   font-family: 'Oswald', sans-serif;
   font-size: clamp(14px, 1.05vw, 17px);
   letter-spacing: 0.02em;
-  color: #fff;
+  color: var(--text-contrast);
   font-weight: 600;
 }
 
@@ -224,7 +224,7 @@
 
 .d-meta {
   font-size: 9px;
-  color: #666;
+  color: var(--text-dim);
   font-weight: 800;
   letter-spacing: 0.12em;
   margin-bottom: 6px;
@@ -235,7 +235,7 @@
   font-size: clamp(17px, 1.25vw, 21px);
   line-height: 1.15;
   margin: 0 0 14px;
-  color: #fff;
+  color: var(--text-contrast);
   letter-spacing: 0.01em;
 }
 
@@ -246,8 +246,8 @@
 }
 
 .tracklist-toggle-btn {
-  background: #181818;
-  border: 1px solid #333;
+  background: var(--surface-5);
+  border: 1px solid var(--border-strong);
   color: var(--pink);
   font-family: 'Inter', sans-serif;
   font-size: 9px;
@@ -260,7 +260,7 @@
 }
 .tracklist-toggle-btn:hover {
   border-color: var(--pink);
-  background: rgba(182, 142, 220, 0.12);
+  background: var(--overlay-lavender-120);
 }
 
 .d-listen-btn {
@@ -269,9 +269,9 @@
   align-items: center;
   flex-grow: 1;
   padding: 8px 10px;
-  background: #181818;
-  border: 1px solid #333;
-  color: #fff;
+  background: var(--surface-5);
+  border: 1px solid var(--border-strong);
+  color: var(--text-contrast);
   font-size: 9px;
   font-weight: 800;
   letter-spacing: 0.1em;
@@ -280,5 +280,5 @@
 .d-listen-btn:hover {
   background: var(--pink);
   border-color: var(--pink);
-  color: #080808;
+  color: var(--bg);
 }
