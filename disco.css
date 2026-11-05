@@ -64,7 +64,7 @@
   background: var(--pink);
   border-color: var(--pink);
   color: #080808;
-  box-shadow: 0 0 15px rgba(255, 43, 145, 0.4);
+  box-shadow: 0 0 15px rgba(182, 142, 220, 0.4);
 }
 
 /* 5 колонок в ряд на широких экранах */
@@ -89,7 +89,7 @@
 .disco-card:hover {
   border-color: var(--acid);
   transform: translateY(-4px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(217, 255, 50, 0.15);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(158, 202, 232, 0.15);
 }
 
 .disco-card-cover {
@@ -260,7 +260,7 @@
 }
 .tracklist-toggle-btn:hover {
   border-color: var(--pink);
-  background: rgba(255, 43, 145, 0.12);
+  background: rgba(182, 142, 220, 0.12);
 }
 
 .d-listen-btn {
